@@ -7,30 +7,33 @@ import MainLayout from './Layouts/MainLayout.jsx'
 import Home from './Pages/Home/Home.jsx'
 import Login from './Pages/Login/Login.jsx'
 import Registration from './Pages/Registration/registration.jsx'
+import AuthContextProvider from './Contexts/AuthContext/AuthContext.jsx'
 
 const route = createBrowserRouter([
   {
-      path: '/',
-      element: <MainLayout/>,
-      children: [
-          {
-              path: '/',
-              element: <Home/>
-          },
-          {
-            path: '/login',
-            element: <Login/>
-          },
-          {
-            path: '/registration',
-            element: <Registration/>
-          }
-      ]
+    path: '/',
+    element: <MainLayout />,
+    children: [
+      {
+        path: '/',
+        element: <Home />
+      },
+      {
+        path: '/login',
+        element: <Login />
+      },
+      {
+        path: '/registration',
+        element: <Registration />
+      }
+    ]
   }
 ])
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <RouterProvider router = {route}/>
+    <AuthContextProvider>
+      <RouterProvider router={route} />
+    </AuthContextProvider>
   </React.StrictMode>,
 )

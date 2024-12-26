@@ -1,7 +1,11 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
+import { authContext } from '../../Contexts/AuthContext/AuthContext'
+import { FaGoogle } from 'react-icons/fa'
 
 const Registration = () => {
+
+    const { createUser,signInWithGoogle } = useContext(authContext)
 
     // Registration
     const handleRegistration = (e) => {
@@ -13,13 +17,24 @@ const Registration = () => {
         const photoUrl = form.photoUrl.value
         const password = form.password.value
         const email = form.email.value
+
+        createUser(email, password, name, photoUrl)
+
     }
 
 
     return (
         <div id='registration'>
             <div className="container py-10">
-            <h1 className='text-center'>Registration</h1>
+                <h1 className='text-center mb-10'>Registration</h1>
+
+                <div className='flex justify-center'>
+                    <button onClick={() => signInWithGoogle()} className='btn btn-lg'><FaGoogle />Signup In Google
+                    </button>
+                </div>
+
+                <p className='text-center mt-6 text-lg font-bold'>or</p>
+
                 <form onSubmit={handleRegistration} className="card-body w-11/12 md:w-8/12 lg:w-6/12 mx-auto">
                     <div className="form-control">
                         <label className="label">
