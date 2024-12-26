@@ -12,7 +12,7 @@ export default {
       },
       colors: {
         primary: '#FF4438',
-        hoverColor: '#D3382F'
+        hover: '#D3382F'
       }
     },
   },
