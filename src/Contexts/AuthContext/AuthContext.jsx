@@ -3,40 +3,54 @@ import React, { useEffect, useState } from 'react'
 import { createContext } from 'react'
 import Swal from 'sweetalert2'
 import { auth } from '../../Firebase/firebase.init'
+import axios from 'axios'
 
 export const authContext = createContext(null)
 
 const AuthContextProvider = ({ children }) => {
-
+    const [allTutorials, setAllTutorials] = useState([])
     const [user, setUser] = useState(null)
     const [loading, setLoading] = useState(true)
 
-   
+    // Get all tutorials
+    useEffect(() => {
+        const fetchMyTutorials = async () => {
+            try {
+                const response = await axios.get(`${import.meta.env.VITE_MAIN_URL}/tutorials`)
+                setAllTutorials(response.data)
+            } catch (error) {
+                console.log(error)
+            }
+        }
+
+        fetchMyTutorials()
+    }, [])
+
 
     // User registraton with email and password
     const createUser = (email, password, displayName, photoURL) => {
         return createUserWithEmailAndPassword(auth, email, password)
-        .then(result => {
-            // Update profile info after successfully registration
-            profileUpdate({displayName : displayName, photoURL: photoURL})
+            .then(result => {
+                // Update profile info after successfully registration
+                profileUpdate({ displayName: displayName, photoURL: photoURL })
 
-            Swal.fire({
-                position: "center center",
-                icon: "success",
-                title: "Registration Successfull",
-                showConfirmButton: false,
-                timer: 1500
+                Swal.fire({
+                    position: "center center",
+                    icon: "success",
+                    title: "Registration Successfull",
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+                console.log('google', result.user)
             })
-            console.log('google', result.user)
-        })
-        .catch(error => {
-            Swal.fire({
-                icon: "error",
-                title: "Oops...",
-                text: "Something went wrong!",
-                footer: `${error.code}. ${error.message}`
+            .catch(error => {
+                Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: "Something went wrong!",
+                    footer: `${error.code}. ${error.message}`
+                })
             })
-        })
     }
 
     // Login in with google
@@ -66,24 +80,24 @@ const AuthContextProvider = ({ children }) => {
     // Login with email and password
     const signIn = (email, password) => {
         return signInWithEmailAndPassword(auth, email, password)
-        .then(result => {
-            Swal.fire({
-                position: "center center",
-                icon: "success",
-                title: "Login Successful!",
-                showConfirmButton: false,
-                timer: 1500
+            .then(result => {
+                Swal.fire({
+                    position: "center center",
+                    icon: "success",
+                    title: "Login Successful!",
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+                console.log('google', result.user)
             })
-            console.log('google', result.user)
-        })
-        .catch(error => {
-            Swal.fire({
-                icon: "error",
-                title: "Oops...",
-                text: "Something went wrong!",
-                footer: `${error.code}. ${error.message}`
+            .catch(error => {
+                Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: "Something went wrong!",
+                    footer: `${error.code}. ${error.message}`
+                })
             })
-        })
     }
 
 
@@ -113,27 +127,27 @@ const AuthContextProvider = ({ children }) => {
     // Sign out
     const userSignOut = () => {
         return signOut(auth)
-        .then(() => {
-            Swal.fire({
-                position: "center center",
-                icon: "success",
-                title: "Signed Out",
-                showConfirmButton: false,
-                timer: 1500
+            .then(() => {
+                Swal.fire({
+                    position: "center center",
+                    icon: "success",
+                    title: "Signed Out",
+                    showConfirmButton: false,
+                    timer: 1500
+                })
             })
-        })
-        .catch(error => {
-            Swal.fire({
-                icon: "error",
-                title: "Oops...",
-                text: "Something went wrong!",
-                footer: `${error.code}. ${error.message}`
+            .catch(error => {
+                Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: "Something went wrong!",
+                    footer: `${error.code}. ${error.message}`
+                })
             })
-        })
     }
 
     // currently signed in user
-    useEffect(()=> {
+    useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
             setUser(currentUser)
             setLoading(false)
@@ -154,7 +168,9 @@ const AuthContextProvider = ({ children }) => {
         profileUpdate,
         userSignOut,
         user,
-        loading
+        loading,
+        allTutorials,
+        setAllTutorials
     }
 
     return (

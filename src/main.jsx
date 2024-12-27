@@ -11,6 +11,7 @@ import AddTutorialsPage from './Pages/AddTutorialsPage/AddTutorialsPage.jsx'
 import Registration from './Pages/Registration/Registration.jsx'
 import PrivateRoute from './Routes/PrivateRoute.jsx'
 import MyTutorialsPage from './Pages/MyTutorialsPage/MyTutorialsPage.jsx'
+import UpdatePage from './Pages/UpdatePage/UpdatePage.jsx'
 
 const route = createBrowserRouter([
   {
@@ -40,6 +41,13 @@ const route = createBrowserRouter([
         element: <PrivateRoute>
           <MyTutorialsPage/>
         </PrivateRoute>
+      },
+      {
+        path: '/update-tutorial/:id',
+        element: <PrivateRoute>
+          <UpdatePage/>
+        </PrivateRoute>,
+        loader: ({params})=> fetch(`${import.meta.env.VITE_MAIN_URL}/tutorials/${params.id}`)
       }
     ]
   }

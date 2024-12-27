@@ -1,20 +1,41 @@
 import axios from 'axios'
 import React, { useContext, useEffect, useState } from 'react'
 import { authContext } from '../../Contexts/AuthContext/AuthContext'
+import Swal from 'sweetalert2'
+import { Link } from 'react-router-dom'
 
 const MyTutorialsPage = () => {
     const [myTutorials, setMyTutorials] = useState([])
-    const { user } = useContext(authContext)
+    const { user, allTutorials, setAllTutorials } = useContext(authContext)
 
     const handleDeleteTutorial = (tutorial_id) => {
         // Delete tutorial from database
         axios.delete(`${import.meta.env.VITE_MAIN_URL}/delete-tutorial/${tutorial_id}`)
-            .then(res => {
-                console.log(res.data)
+            .then(result => {
+                Swal.fire({
+                    position: "center center",
+                    icon: "success",
+                    title: "Deleted",
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+                console.log('google', result.user)
             })
             .catch(error => {
-                console.log(error.message)
+                Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: "Something went wrong!",
+                    footer: `${error.code}. ${error.message}`
+                })
             })
+
+        // Update remaining tutorials in front-end instantly
+        const remainingTutorials = allTutorials.filter((tutorial) => tutorial._id !== tutorial_id)
+        setAllTutorials(remainingTutorials)
+
+        const updatedMyTutorials = myTutorials.filter((tutorial) => tutorial._id !== tutorial_id);
+        setMyTutorials(updatedMyTutorials);
     }
 
     useEffect(() => {
@@ -77,7 +98,9 @@ const MyTutorialsPage = () => {
                                             <span className="badge badge-ghost badge-sm">{review && review} Star Review</span>
                                         </td>
                                         <td>
-                                            <button className='btn bg-green-600 text-white hover:bg-green-700'>Update</button>
+                                            <Link to={`/update-tutorial/${_id}`}>
+                                                <button className='btn bg-green-600 text-white hover:bg-green-700'>Update</button>
+                                            </Link>
                                         </td>
                                         <th>
                                             <button onClick={() => handleDeleteTutorial(_id)} className='btn bg-primary text-white hover:bg-hover'>Update</button>
