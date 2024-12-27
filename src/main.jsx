@@ -6,8 +6,9 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import MainLayout from './Layouts/MainLayout.jsx'
 import Home from './Pages/Home/Home.jsx'
 import Login from './Pages/Login/Login.jsx'
-import Registration from './Pages/Registration/registration.jsx'
 import AuthContextProvider from './Contexts/AuthContext/AuthContext.jsx'
+import AddTutorialsPage from './Pages/AddTutorialsPage/AddTutorialsPage.jsx'
+import Registration from './Pages/Registration/Registration.jsx'
 
 const route = createBrowserRouter([
   {
@@ -24,7 +25,11 @@ const route = createBrowserRouter([
       },
       {
         path: '/registration',
-        element: <Registration />
+        element: <Registration/>
+      },
+      {
+        path: '/add-tutorials',
+        element: <AddTutorialsPage/>
       }
     ]
   }

@@ -2,13 +2,15 @@ import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
 import { authContext } from '../../Contexts/AuthContext/AuthContext'
 import { FaGoogle } from 'react-icons/fa'
+import axios from 'axios'
+import Swal from 'sweetalert2'
 
 const Registration = () => {
 
-    const { createUser,signInWithGoogle } = useContext(authContext)
+    const { createUser, signInWithGoogle } = useContext(authContext)
 
     // Registration
-    const handleRegistration = (e) => {
+    const handleRegistration = async (e) => {
         e.preventDefault()
 
         // Collecting form data
@@ -18,7 +20,24 @@ const Registration = () => {
         const password = form.password.value
         const email = form.email.value
 
+        const user = {
+            name,
+            email,
+            photoUrl,
+            password
+        }
+
         createUser(email, password, name, photoUrl)
+
+        // Send user data into database
+        try{
+            const response = await axios.post(`${import.meta.env.VITE_MAIN_URL}/users`, user)
+
+            console.log(response.data)
+        }catch(error){
+            console.error('Error while sent', error.response)
+        }
+            
 
     }
 
