@@ -23,7 +23,7 @@ const Header = () => {
                         <li><NavLink>Home</NavLink></li>
                         <li><NavLink>Find Tutors</NavLink></li>
                         <li><NavLink to={'/add-tutorials'}>Add Tutorials</NavLink></li>
-                        <li><NavLink>My Tutorials</NavLink></li>
+                        <li><NavLink to={'/my-tutorials'}>My Tutorials</NavLink></li>
                         <li><NavLink>My Booked Tutors</NavLink></li>
                     </ul>
                 </nav>

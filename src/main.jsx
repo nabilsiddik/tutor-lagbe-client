@@ -9,6 +9,8 @@ import Login from './Pages/Login/Login.jsx'
 import AuthContextProvider from './Contexts/AuthContext/AuthContext.jsx'
 import AddTutorialsPage from './Pages/AddTutorialsPage/AddTutorialsPage.jsx'
 import Registration from './Pages/Registration/Registration.jsx'
+import PrivateRoute from './Routes/PrivateRoute.jsx'
+import MyTutorialsPage from './Pages/MyTutorialsPage/MyTutorialsPage.jsx'
 
 const route = createBrowserRouter([
   {
@@ -29,7 +31,15 @@ const route = createBrowserRouter([
       },
       {
         path: '/add-tutorials',
-        element: <AddTutorialsPage/>
+        element: <PrivateRoute>
+          <AddTutorialsPage/>
+        </PrivateRoute>
+      },
+      {
+        path: '/my-tutorials',
+        element: <PrivateRoute>
+          <MyTutorialsPage/>
+        </PrivateRoute>
       }
     ]
   }

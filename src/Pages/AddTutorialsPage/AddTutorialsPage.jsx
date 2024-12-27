@@ -13,6 +13,7 @@ const AddTutorialsPage = () => {
         const tutorName = user && user?.displayName
         const tutorEmail = user && user?.email
         const tutorialImage = form.tutorialImageUrl.value
+        const price = form.price.value
         const language = form.language.value
         const description = form.description.value
         const review = form.review.value
@@ -21,6 +22,7 @@ const AddTutorialsPage = () => {
             tutorName,
             tutorEmail,
             tutorialImage,
+            price,
             language,
             description,
             review

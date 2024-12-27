@@ -153,7 +153,8 @@ const AuthContextProvider = ({ children }) => {
         signIn,
         profileUpdate,
         userSignOut,
-        user
+        user,
+        loading
     }
 
     return (
