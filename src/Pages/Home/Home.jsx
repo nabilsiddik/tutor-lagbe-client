@@ -6,7 +6,9 @@ const Home = () => {
 
   return (
     <div id='home_page'>
-      <LanguageCategorySection/>
+      <div className="container">
+        <LanguageCategorySection />
+      </div>
     </div>
   )
 }
