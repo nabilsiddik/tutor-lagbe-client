@@ -1,10 +1,11 @@
 import React, { useContext } from 'react'
 import { authContext } from '../../Contexts/AuthContext/AuthContext'
 import axios from 'axios'
+import Swal from 'sweetalert2'
 
 const AddTutorialsPage = () => {
 
-    const {user} = useContext(authContext)
+    const { user } = useContext(authContext)
 
     const handleAddTutorial = async (e) => {
         e.preventDefault()
@@ -20,24 +21,50 @@ const AddTutorialsPage = () => {
         const description = form.description.value
         const review = form.review.value
 
-        const tutorial = {
-            tutorName,
-            tutorEmail,
-            tutorImage,
-            tutorialName,
-            tutorialImage,
-            price,
-            language,
-            description,
-            review
+        if (tutorialImage !== '' && tutorialName !== '' && price !== '' && language !== '' && description !== '' && review !== '') {
+
+            const tutorial = {
+                tutorName,
+                tutorEmail,
+                tutorImage,
+                tutorialName,
+                tutorialImage,
+                price,
+                language,
+                description,
+                review
+            }
+
+
+            // Send tutorial to database
+            const response = await axios.post(`${import.meta.env.VITE_MAIN_URL}/tutorials`, tutorial)
+                .then(result => {
+                    Swal.fire({
+                        position: "center center",
+                        icon: "success",
+                        title: "Tutorial Added Successfully",
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                    console.log('google', result.user)
+                })
+                .catch(error => {
+                    Swal.fire({
+                        icon: "error",
+                        title: "Oops...",
+                        text: "Something went wrong!",
+                        footer: `${error.code}. ${error.message}`
+                    })
+                })
+        }else{
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "Something went wrong!",
+                footer: `Please fill out the required fields`
+            })
         }
 
-
-        // Send tutorial to database
-        const response = await axios.post(`${import.meta.env.VITE_MAIN_URL}/tutorials`, tutorial)
-
-        // // Send tutor to database
-        // const res = await axios.post(`${import.meta.env.VITE_MAIN_URL}/tutors`, tutor)
 
     }
 
@@ -47,7 +74,7 @@ const AddTutorialsPage = () => {
                 <h1 className='mb-10 text-center'>Add Tutorial</h1>
                 <form onSubmit={handleAddTutorial} className='w-11/12 md:w-8/12 lg:w-6/12 mx-auto'>
 
-                <div className="form-control">
+                    <div className="form-control">
                         <label className="label">
                             <span className="label-text">Tutorial Name<span className='text-red-600'> *</span></span>
                         </label>

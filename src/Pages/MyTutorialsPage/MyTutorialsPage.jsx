@@ -13,8 +13,12 @@ const MyTutorialsPage = () => {
         axios.delete(`${import.meta.env.VITE_MAIN_URL}/delete-tutorial/${tutorial_id}`)
             .then(result => {
 
-                console.log(result.data.deletedCount)
+                if(result.data.deletedCount > 0){
+                    const remainingTutorial = myTutorials.filter(tutorial => tutorial._id !== tutorial_id)
 
+                    setMyTutorials(remainingTutorial)
+                }
+                
                 Swal.fire({
                     position: "center center",
                     icon: "success",
@@ -59,7 +63,6 @@ const MyTutorialsPage = () => {
                 <div className="display_my_tutorials">
                     <div className="overflow-x-auto">
                         <table className="table">
-                            {/* head */}
                             <thead>
                                 <tr>
                                     <th>Info</th>
