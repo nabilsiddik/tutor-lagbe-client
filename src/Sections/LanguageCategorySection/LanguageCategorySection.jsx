@@ -1,6 +1,7 @@
 import React from 'react'
 import { tutorCategories } from '../../Data/tutorCategories'
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom'; import { FaArrowRight } from "react-icons/fa";
+
 
 const LanguageCategorySection = () => {
     return (
@@ -10,13 +11,18 @@ const LanguageCategorySection = () => {
                     const { logo, title, subtitle, slug } = category
 
                     return <Link to={`/find-tutors/${slug}`} key={index}>
-                        <div className='flex items-center gap-4 p-5 shadow-lg border rounded-lg'>
-                            <div>
-                                <img className='w-[66px]' src={logo} alt="" />
+                        <div className='flex items-center justify-between gap-4 p-5 shadow-lg border rounded-lg'>
+                            <div className='flex items-center gap-4'>
+                                <div>
+                                    <img className='w-[66px]' src={logo} alt="" />
+                                </div>
+                                <div>
+                                    <h3>{title}</h3>
+                                    <p>{subtitle}</p>
+                                </div>
                             </div>
                             <div>
-                                <h3>{title}</h3>
-                                <p>{subtitle}</p>
+                                <FaArrowRight />
                             </div>
                         </div>
                     </Link>
