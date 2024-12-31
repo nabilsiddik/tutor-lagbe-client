@@ -1,11 +1,12 @@
 import React, { useContext } from 'react'
 import { authContext } from '../../Contexts/AuthContext/AuthContext'
+import LanguageCategorySection from '../../Sections/LanguageCategorySection/LanguageCategorySection'
 
 const Home = () => {
 
   return (
-    <div>
-      <h1>home</h1>
+    <div id='home_page'>
+      <LanguageCategorySection/>
     </div>
   )
 }

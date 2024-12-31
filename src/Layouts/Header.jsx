@@ -21,10 +21,10 @@ const Header = () => {
                 <nav className="header_menu">
                     <ul className='flex items-center gap-5 text-white font-[500]'>
                         <li><NavLink>Home</NavLink></li>
-                        <li><NavLink>Find Tutors</NavLink></li>
+                        <li><NavLink to={'/find-tutors'}>Find Tutors</NavLink></li>
                         <li><NavLink to={'/add-tutorials'}>Add Tutorials</NavLink></li>
                         <li><NavLink to={'/my-tutorials'}>My Tutorials</NavLink></li>
-                        <li><NavLink>My Booked Tutors</NavLink></li>
+                        <li><NavLink to={'/my-booked-tutors'}>My Booked Tutors</NavLink></li>
                     </ul>
                 </nav>
 

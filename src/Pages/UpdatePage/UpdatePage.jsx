@@ -8,12 +8,13 @@ const UpdatePage = () => {
 
     const { user } = useContext(authContext)
 
-    const { tutorialImage, tutorEmail, price, language, description, review, _id } = useLoaderData()
+    const { tutorialImage, tutorialName, tutorEmail, price, language, description, review, _id } = useLoaderData()
 
     const handleUpdateTutorial = (e) => {
         e.preventDefault()
 
         const form = e.target
+        const tutorialName = form.tutorialName.value
         const tutorialImage = form.tutorialImageUrl.value
         const price = form.price.value
         const language = form.language.value
@@ -21,6 +22,7 @@ const UpdatePage = () => {
 
         const updatedTutorial = {
             tutorialImage,
+            tutorialName,
             price,
             language,
             description,
@@ -52,14 +54,21 @@ const UpdatePage = () => {
                         <label className="label">
                             <span className="label-text"> Tutor Name</span>
                         </label>
-                        <input name='tutorialImageUrl' type="text" placeholder="Tutor Name" defaultValue={user && user?.displayName} className="input input-bordered" disabled />
+                        <input type="text" placeholder="Tutor Name" defaultValue={user && user?.displayName} className="input input-bordered" disabled />
                     </div>
 
                     <div className="form-control">
                         <label className="label">
                             <span className="label-text">Tutor Email</span>
                         </label>
-                        <input name='tutorialImageUrl' type="text" defaultValue={user && user?.email} placeholder="Tutor Email" className="input input-bordered" disabled />
+                        <input type="text" defaultValue={user && user?.email} placeholder="Tutor Email" className="input input-bordered" disabled />
+                    </div>
+
+                    <div className="form-control">
+                        <label className="label">
+                            <span className="label-text">Tutorial Name<span className='text-red-600'> *</span></span>
+                        </label>
+                        <input defaultValue={tutorialName} name='tutorialName' type="text" placeholder="Tutorial Name" className="input input-bordered" />
                     </div>
 
                     <div className="form-control">

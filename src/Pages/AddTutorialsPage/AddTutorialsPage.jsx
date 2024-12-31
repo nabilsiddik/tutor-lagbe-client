@@ -11,8 +11,10 @@ const AddTutorialsPage = () => {
 
         const form = e.target
         const tutorName = user && user?.displayName
+        const tutorImage = user && user?.photoURL
         const tutorEmail = user && user?.email
         const tutorialImage = form.tutorialImageUrl.value
+        const tutorialName = form.tutorialName.value
         const price = form.price.value
         const language = form.language.value
         const description = form.description.value
@@ -21,6 +23,8 @@ const AddTutorialsPage = () => {
         const tutorial = {
             tutorName,
             tutorEmail,
+            tutorImage,
+            tutorialName,
             tutorialImage,
             price,
             language,
@@ -32,6 +36,9 @@ const AddTutorialsPage = () => {
         // Send tutorial to database
         const response = await axios.post(`${import.meta.env.VITE_MAIN_URL}/tutorials`, tutorial)
 
+        // // Send tutor to database
+        // const res = await axios.post(`${import.meta.env.VITE_MAIN_URL}/tutors`, tutor)
+
     }
 
     return (
@@ -39,6 +46,14 @@ const AddTutorialsPage = () => {
             <div className="container py-10">
                 <h1 className='mb-10 text-center'>Add Tutorial</h1>
                 <form onSubmit={handleAddTutorial} className='w-11/12 md:w-8/12 lg:w-6/12 mx-auto'>
+
+                <div className="form-control">
+                        <label className="label">
+                            <span className="label-text">Tutorial Name<span className='text-red-600'> *</span></span>
+                        </label>
+                        <input name='tutorialName' type="text" placeholder="Tutorial Name" className="input input-bordered" />
+                    </div>
+
                     <div className="form-control">
                         <label className="label">
                             <span className="label-text">Image URL<span className='text-red-600'> *</span></span>
@@ -50,7 +65,17 @@ const AddTutorialsPage = () => {
                         <label className="label">
                             <span className="label-text">Language<span className='text-red-600'> *</span></span>
                         </label>
-                        <input name='language' type="text" placeholder="Language" className="input input-bordered" />
+                        <select className='input input-bordered' name="language" defaultValue={'english'}>
+                            <option value="english">English</option>
+                            <option value="bangla">Bangla</option>
+                            <option value="spanish">Spanish</option>
+                            <option value="french">French</option>
+                            <option value="german">German</option>
+                            <option value="italian">Italian</option>
+                            <option value="chinese">Chinese</option>
+                            <option value="arabic">Arabic</option>
+                            <option value="japanese">Japanese</option>
+                        </select>
                     </div>
 
                     <div className="form-control">

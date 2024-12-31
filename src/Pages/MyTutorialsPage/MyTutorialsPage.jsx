@@ -12,6 +12,9 @@ const MyTutorialsPage = () => {
         // Delete tutorial from database
         axios.delete(`${import.meta.env.VITE_MAIN_URL}/delete-tutorial/${tutorial_id}`)
             .then(result => {
+
+                console.log(result.data.deletedCount)
+
                 Swal.fire({
                     position: "center center",
                     icon: "success",
@@ -30,12 +33,6 @@ const MyTutorialsPage = () => {
                 })
             })
 
-        // Update remaining tutorials in front-end instantly
-        const remainingTutorials = allTutorials.filter((tutorial) => tutorial._id !== tutorial_id)
-        setAllTutorials(remainingTutorials)
-
-        const updatedMyTutorials = myTutorials.filter((tutorial) => tutorial._id !== tutorial_id);
-        setMyTutorials(updatedMyTutorials);
     }
 
     useEffect(() => {
@@ -53,7 +50,6 @@ const MyTutorialsPage = () => {
         }
     }, [])
 
-    console.log(myTutorials)
 
     return (
         <div id='my_tutorials'>
@@ -74,7 +70,7 @@ const MyTutorialsPage = () => {
                             </thead>
                             <tbody>
                                 {myTutorials.length > 0 && myTutorials.map((tutorial) => {
-                                    const { tutorName, tutorialImage, price, language, description, review, _id } = tutorial
+                                    const { tutorialName, tutorName, tutorialImage, price, language, description, review, _id } = tutorial
                                     return <tr key={_id}>
                                         <td>
                                             <div className="flex items-center gap-3">
@@ -86,7 +82,8 @@ const MyTutorialsPage = () => {
                                                     </div>
                                                 </div>
                                                 <div>
-                                                    <div className="font-bold">{tutorName && tutorName}</div>
+                                                    <div className="font-bold">{tutorialName && tutorialName}</div>
+                                                    <div className="text-sm opacity-50">By {tutorName && tutorName}</div>
                                                     <div className="text-sm opacity-50">BDT {price}</div>
                                                     <div className="text-sm opacity-50">{language && language}</div>
                                                 </div>
@@ -103,7 +100,7 @@ const MyTutorialsPage = () => {
                                             </Link>
                                         </td>
                                         <th>
-                                            <button onClick={() => handleDeleteTutorial(_id)} className='btn bg-primary text-white hover:bg-hover'>Update</button>
+                                            <button onClick={() => handleDeleteTutorial(_id)} className='btn bg-primary text-white hover:bg-hover'>Delete</button>
                                         </th>
                                     </tr>
                                 })}
