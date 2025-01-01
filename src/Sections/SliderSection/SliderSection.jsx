@@ -6,7 +6,7 @@ import slide3 from '../../assets/images/slide-3.jpg'
 const SliderSection = () => {
     return (
         <div id='slider_section'>
-            <div className="carousel w-full h-[800px]">
+            <div className="carousel w-full h-[400px] md:h-[800px]">
                 <div id="slide1" className="carousel-item relative w-full h-full">
                     <img
                         src={slide1}

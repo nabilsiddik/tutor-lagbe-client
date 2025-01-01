@@ -4,7 +4,6 @@ import { useLoaderData } from 'react-router-dom'
 const TutorCategoryPage = () => {
 
   const tutors = useLoaderData()
-  console.log(tutors)
 
   return (
     <div id='tutor_category_page'>
@@ -14,7 +13,7 @@ const TutorCategoryPage = () => {
           {tutors.length > 0 && tutors.map((tutor) => {
             const { tutorName, tutorImage, language, price, review, description } = tutor
 
-            return <div className="bg-white rounded-lg shadow-md p-4 md:p-6 flex flex-col md:flex-row items-start md:items-center gap-4 w-full max-w-md md:max-w-2xl mx-auto">
+            return <div className="bg-white rounded-lg shadow-md p-4 md:p-6 flex flex-col md:flex-row items-start md:items-center gap-4 w-full max-w-md md:max-w-2xl mx-auto  dark:bg-darklight dark:text-white">
             <div className="w-16 h-16 md:w-20 md:h-20 flex-shrink-0">
               <img
                 src={tutorImage}

@@ -74,21 +74,21 @@ const AddTutorialsPage = () => {
 
                     <div className="form-control">
                         <label className="label">
-                            <span className="label-text">Tutorial Name<span className='text-red-600'> *</span></span>
+                            <span className="label-text dark:text-white">Tutorial Name<span className='text-red-600'> *</span></span>
                         </label>
                         <input name='tutorialName' type="text" placeholder="Tutorial Name" className="input input-bordered" />
                     </div>
 
                     <div className="form-control">
                         <label className="label">
-                            <span className="label-text">Image URL<span className='text-red-600'> *</span></span>
+                            <span className="label-text dark:text-white">Image URL<span className='text-red-600'> *</span></span>
                         </label>
                         <input name='tutorialImageUrl' type="text" placeholder="Image URL" className="input input-bordered" />
                     </div>
 
                     <div className="form-control">
                         <label className="label">
-                            <span className="label-text">Language<span className='text-red-600'> *</span></span>
+                            <span className="label-text dark:text-white">Language<span className='text-red-600'> *</span></span>
                         </label>
                         <select className='input input-bordered' name="language" defaultValue={'english'}>
                             <option value="english">English</option>
@@ -105,14 +105,14 @@ const AddTutorialsPage = () => {
 
                     <div className="form-control">
                         <label className="label">
-                            <span className="label-text">Price<span className='text-red-600'> *</span></span>
+                            <span className="label-text dark:text-white">Price<span className='text-red-600'> *</span></span>
                         </label>
                         <input name='price' type="number" placeholder="Price" className="input input-bordered" />
                     </div>
 
                     <div className="form-control">
                         <label className="label">
-                            <span className="label-text">Description<span className='text-red-600'> *</span></span>
+                            <span className="label-text dark:text-white">Description<span className='text-red-600'> *</span></span>
                         </label>
                         <textarea name='description' placeholder="Description..." className="textarea textarea-bordered" />
                     </div>

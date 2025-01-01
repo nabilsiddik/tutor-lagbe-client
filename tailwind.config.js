@@ -4,6 +4,7 @@ export default {
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
+  darkMode: 'class',
   theme: {
     extend: {
       fontFamily: {
@@ -12,7 +13,9 @@ export default {
       },
       colors: {
         primary: '#FF4438',
-        hover: '#D3382F'
+        hover: '#D3382F',
+        dark: '#0F0F0F',
+        darklight: '#282828'
       }
     },
   },

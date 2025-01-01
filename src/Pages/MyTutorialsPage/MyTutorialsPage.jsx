@@ -62,19 +62,18 @@ const MyTutorialsPage = () => {
 
                 <div className="display_my_tutorials">
                     <div className="overflow-x-auto">
-                        <table className="table">
-                            <thead>
-                                <tr>
+                        <table className="table table-lg flex items-center">
+                            <thead className='hidden md:block'>
+                                <tr className='flex justify-between flex-col md:flex-row dark:bg-darklight dark:text-white'>
                                     <th>Info</th>
                                     <th>Description</th>
-                                    <th>Update</th>
-                                    <th>Delete</th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 {myTutorials.length > 0 && myTutorials.map((tutorial) => {
                                     const { tutorialName, tutorName, tutorialImage, price, language, description, review, _id } = tutorial
-                                    return <tr key={_id}>
+                                    return <tr key={_id} className='flex items-center justify-between flex-col md:flex-row dark:bg-darklight dark:text-white'>
                                         <td>
                                             <div className="flex items-center gap-3">
                                                 <div className="avatar">
@@ -92,10 +91,10 @@ const MyTutorialsPage = () => {
                                                 </div>
                                             </div>
                                         </td>
-                                        <td>
+                                        <td className='flex-1 md:w-5/12 w-full'>
                                             <span>{description && description}</span>
                                             <br />
-                                            <span className="badge badge-ghost badge-sm">{review && review} Star Review</span>
+                                            <span className="badge badge-ghost badge-sm">{review && review} Review</span>
                                         </td>
                                         <td>
                                             <Link to={`/update-tutorial/${_id}`}>

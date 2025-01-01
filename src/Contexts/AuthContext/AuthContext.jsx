@@ -12,6 +12,23 @@ const AuthContextProvider = ({ children }) => {
     const [user, setUser] = useState(null)
     const [loading, setLoading] = useState(true)
 
+    const [darkMode, setDarkMode] = useState(() => {
+        return localStorage.getItem('theme') === 'dark';
+    })
+    const [limitNumberOfEquipment, setLimitNumberOfEquipment] = useState([])
+
+
+    useEffect(() => {
+        const root = document.documentElement;
+        if (darkMode) {
+            root.classList.add('dark');
+            localStorage.setItem('theme', 'dark');
+        } else {
+            root.classList.remove('dark');
+            localStorage.setItem('theme', 'light');
+        }
+    }, [darkMode]);
+
     // Get all tutorials
     useEffect(() => {
         const fetchMyTutorials = async () => {
@@ -170,7 +187,9 @@ const AuthContextProvider = ({ children }) => {
         user,
         loading,
         allTutorials,
-        setAllTutorials
+        setAllTutorials,
+        darkMode,
+        setDarkMode
     }
 
     return (

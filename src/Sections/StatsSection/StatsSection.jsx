@@ -31,22 +31,22 @@ const StatsSection = () => {
     <div id='stats_section' className='py-20'>
       <div className="container">
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
-            <div className='shadow-lg p-5 rounded-lg border'>
+            <div className='shadow-lg p-5 rounded-lg border dark:bg-darklight dark:text-white'>
                 <h3>{allTutors.length - 1}+</h3>
                 <p>Experienced Tutor</p>
             </div>
 
-            <div className='shadow-lg p-5 rounded-lg border'>
+            <div className='shadow-lg p-5 rounded-lg border dark:bg-darklight dark:text-white'>
                 <h3>{allUsers.length - 1}+</h3>
                 <p>Experienced Tutor</p>
             </div>
 
-            <div className='shadow-lg p-5 rounded-lg border'>
+            <div className='shadow-lg p-5 rounded-lg border dark:bg-darklight dark:text-white'>
                 <h3>9+</h3>
                 <p>Languages</p>
             </div>
 
-            <div className='shadow-lg p-5 rounded-lg border'>
+            <div className='shadow-lg p-5 rounded-lg border dark:bg-darklight dark:text-white'>
                 <h3>{allUsers.length - 1}+</h3>
                 <p>Users</p>
             </div>

@@ -7,6 +7,12 @@ const MyBookedTutorsPage = () => {
 
   const [myBookedTutors, setMyBookedTutors] = useState([])
   const {user} = useContext(authContext)
+
+  
+  const handleReviewTutorial = async(tutor) => {
+    const response = await axios.post(`${import.meta.env.VITE_MAIN_URL}/my-booked-tutors/${tutor._id}`, tutor)
+  }
+
  
   useEffect(()=>{
     if(user){
@@ -19,22 +25,18 @@ const MyBookedTutorsPage = () => {
   
       getMybookedTutors()
     }
-  }, [])
+  }, [handleReviewTutorial])
 
-
-  const handleReviewTutorial = async(tutor) => {
-    const response = await axios.post(`${import.meta.env.VITE_MAIN_URL}/my-booked-tutors/${tutor._id}`, tutor)
-  }
 
   return (
     <div id='my_booked_tutors'>
       <div className="container py-10">
         <div className="display_my_booked_tutors">
           <div className="overflow-x-auto">
-            <table className="table">
+            <table className="table flex items-center">
               {/* head */}
-              <thead>
-                <tr>
+              <thead className='hidden md:block'>
+                <tr className='flex justify-between flex-col md:flex-row dark:bg-darklight dark:text-white'>
                   <th>Info</th>
                   <th>Review</th>
                   <th>Price</th>
@@ -44,7 +46,7 @@ const MyBookedTutorsPage = () => {
               <tbody>
                 {myBookedTutors.length > 0 && myBookedTutors.map((tutor) => {
                   const { tutorName, tutorImage, price, language, review, _id } = tutor
-                  return <tr key={_id}>
+                  return <tr key={_id} className='flex items-center justify-between flex-col md:flex-row dark:bg-darklight dark:text-white'>
                     <td>
                       <div className="flex items-center gap-3">
                         <div className="avatar">
@@ -62,7 +64,7 @@ const MyBookedTutorsPage = () => {
                     </td>
                     <td>
                       <br />
-                      <span className="badge badge-ghost badge-sm">{review ? review : 0} Star Review</span>
+                      <span className="badge badge-ghost badge-sm">{review ? review : 0} Review</span>
                     </td>
                     <td>
                       <p>BDT {price && price}</p>

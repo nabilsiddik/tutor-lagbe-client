@@ -27,7 +27,7 @@ const FindTutorsPage = () => {
 
                         const { _id, tutorName, tutorImage, language, review, description } = tutor
 
-                        return <div key={_id} className="bg-white rounded-lg shadow-md p-4 md:p-6 flex flex-col md:flex-row items-start md:items-center gap-4 w-full max-w-md md:max-w-2xl mx-auto">
+                        return <div key={_id} className="bg-white rounded-lg shadow-md p-4 md:p-6 flex flex-col md:flex-row items-start md:items-center gap-4 w-full max-w-md md:max-w-2xl mx-auto dark:bg-darklight dark:text-white">
                             <div className="w-16 h-16 md:w-20 md:h-20 flex-shrink-0">
                                 <img
                                     src={tutorImage}
