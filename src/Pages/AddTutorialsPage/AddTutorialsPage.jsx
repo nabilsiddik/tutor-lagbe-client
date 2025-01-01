@@ -19,9 +19,8 @@ const AddTutorialsPage = () => {
         const price = form.price.value
         const language = form.language.value
         const description = form.description.value
-        const review = form.review.value
 
-        if (tutorialImage !== '' && tutorialName !== '' && price !== '' && language !== '' && description !== '' && review !== '') {
+        if (tutorialImage !== '' && tutorialName !== '' && price !== '' && language !== '' && description !== '') {
 
             const tutorial = {
                 tutorName,
@@ -31,8 +30,7 @@ const AddTutorialsPage = () => {
                 tutorialImage,
                 price,
                 language,
-                description,
-                review
+                description
             }
 
 
@@ -117,13 +115,6 @@ const AddTutorialsPage = () => {
                             <span className="label-text">Description<span className='text-red-600'> *</span></span>
                         </label>
                         <textarea name='description' placeholder="Description..." className="textarea textarea-bordered" />
-                    </div>
-
-                    <div className="form-control">
-                        <label className="label">
-                            <span className="label-text">Review<span className='text-red-600'> *</span></span>
-                        </label>
-                        <input name='review' defaultValue={0} type="number" placeholder="Review" className="input input-bordered" />
                     </div>
 
                     <div className="submit">

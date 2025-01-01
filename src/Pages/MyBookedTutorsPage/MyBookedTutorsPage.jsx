@@ -23,9 +23,7 @@ const MyBookedTutorsPage = () => {
 
 
   const handleReviewTutorial = async(tutor) => {
-    const response = await axios.patch(`${import.meta.env.VITE_MAIN_URL}/my-booked-tutors/${tutor._id}`, tutor)
-
-    console.log(tutor._id, tutor, typeof tutor.review)
+    const response = await axios.post(`${import.meta.env.VITE_MAIN_URL}/my-booked-tutors/${tutor._id}`, tutor)
   }
 
   return (
@@ -64,7 +62,7 @@ const MyBookedTutorsPage = () => {
                     </td>
                     <td>
                       <br />
-                      <span className="badge badge-ghost badge-sm">{review && review} Star Review</span>
+                      <span className="badge badge-ghost badge-sm">{review ? review : 0} Star Review</span>
                     </td>
                     <td>
                       <p>BDT {price && price}</p>
