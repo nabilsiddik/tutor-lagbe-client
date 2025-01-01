@@ -17,7 +17,7 @@ const Header = () => {
         <nav className="header_menu">
             <ul
                 tabIndex={0}
-                className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
+                className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow  dark:bg-red-600">
                 <li><NavLink to={'/'}>Home</NavLink></li>
                 <li><NavLink to={'/find-tutors'}>Find Tutors</NavLink></li>
                 <li><NavLink to={'/add-tutorials'}>Add Tutorials</NavLink></li>
@@ -39,10 +39,10 @@ const Header = () => {
     </nav>
 
     return (
-        <header id='header' className='bg-primary'>
+        <header id='header' className='bg-primary py-2'>
             <div className="container">
-                <div className="navbar bg-primary">
-                    <div className="navbar-start">
+                <div className="navbar bg-primary flex flex-col md:flex-row gap-4">
+                    <div className="navbar-start flex justify-center">
                         <div className="dropdown">
                             <div tabIndex={0} role="button" className="btn text-white btn-ghost lg:hidden">
                                 <svg
@@ -67,7 +67,7 @@ const Header = () => {
                     <div className="navbar-center hidden lg:flex">
                         {mainMenu}
                     </div>
-                    <div className="navbar-end">
+                    <div className="navbar-end flex flex-col gap-3 sm:flex-row justify-center">
                         {user?.email ?
                             <div className='flex items-center gap-5'>
                                 <button onClick={handleLogout} className='btn'>Sign Out</button>

@@ -9,7 +9,7 @@ const SliderSection = () => {
             <div className="carousel w-full h-[400px] md:h-[800px]">
                 <div id="slide1" className="carousel-item relative w-full h-full">
                     <img
-                        src={slide1}
+                        src={slide2}
                         className="w-full h-full object-cover object-center" />
                     <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
                         <a href="#slide4" className="btn btn-circle">❮</a>
@@ -18,7 +18,7 @@ const SliderSection = () => {
                 </div>
                 <div id="slide2" className="carousel-item relative w-full">
                     <img
-                        src={slide2}
+                        src={slide1}
                         className="w-full h-full object-cover object-center" />
                     <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
                         <a href="#slide1" className="btn btn-circle">❮</a>
