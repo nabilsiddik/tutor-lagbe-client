@@ -44,7 +44,6 @@ const AddTutorialsPage = () => {
                         showConfirmButton: false,
                         timer: 1500
                     })
-                    console.log('google', result.user)
                 })
                 .catch(error => {
                     Swal.fire({

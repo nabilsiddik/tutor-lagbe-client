@@ -13,12 +13,12 @@ const MyTutorialsPage = () => {
         axios.delete(`${import.meta.env.VITE_MAIN_URL}/delete-tutorial/${tutorial_id}`)
             .then(result => {
 
-                if(result.data.deletedCount > 0){
+                if (result.data.deletedCount > 0) {
                     const remainingTutorial = myTutorials.filter(tutorial => tutorial._id !== tutorial_id)
 
                     setMyTutorials(remainingTutorial)
                 }
-                
+
                 Swal.fire({
                     position: "center center",
                     icon: "success",
@@ -26,7 +26,6 @@ const MyTutorialsPage = () => {
                     showConfirmButton: false,
                     timer: 1500
                 })
-                console.log('google', result.user)
             })
             .catch(error => {
                 Swal.fire({
@@ -43,10 +42,12 @@ const MyTutorialsPage = () => {
         if (user?.email) {
             const fetchMyTutorials = async () => {
                 try {
-                    const response = await axios.get(`${import.meta.env.VITE_MAIN_URL}/my-tutorials?email=${user && user?.email}`)
+                    const response = await axios.get(`${import.meta.env.VITE_MAIN_URL}/my-tutorials?email=${user && user?.email}`, {
+                        withCredentials: true
+                    })
                     setMyTutorials(response.data)
                 } catch (error) {
-                    console.log(error)
+                    
                 }
             }
 

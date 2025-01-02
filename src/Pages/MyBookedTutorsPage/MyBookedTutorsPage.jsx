@@ -17,7 +17,9 @@ const MyBookedTutorsPage = () => {
   useEffect(()=>{
     if(user){
       const getMybookedTutors = async() => {
-        await axios.get(`${import.meta.env.VITE_MAIN_URL}/my-booked-tutors?email=${user && user?.email}`)
+        await axios.get(`${import.meta.env.VITE_MAIN_URL}/my-booked-tutors?email=${user && user?.email}`, {
+          withCredentials: true
+        })
         .then(res => {
           setMyBookedTutors(res.data)
         })

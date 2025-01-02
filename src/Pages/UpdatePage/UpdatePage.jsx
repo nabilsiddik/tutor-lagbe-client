@@ -80,9 +80,19 @@ const UpdatePage = () => {
 
                     <div className="form-control">
                         <label className="label">
-                            <span className="label-text">Language<span className='text-red-600'> *</span></span>
+                            <span className="label-text dark:text-white">Language<span className='text-red-600'> *</span></span>
                         </label>
-                        <input defaultValue={language} name='language' type="text" placeholder="Language" className="input input-bordered" />
+                        <select className='input input-bordered' name="language" defaultValue={language}>
+                            <option value="english">English</option>
+                            <option value="bangla">Bangla</option>
+                            <option value="spanish">Spanish</option>
+                            <option value="french">French</option>
+                            <option value="german">German</option>
+                            <option value="italian">Italian</option>
+                            <option value="chinese">Chinese</option>
+                            <option value="arabic">Arabic</option>
+                            <option value="japanese">Japanese</option>
+                        </select>
                     </div>
 
                     <div className="form-control">

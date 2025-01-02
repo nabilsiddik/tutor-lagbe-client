@@ -36,7 +36,12 @@ const AuthContextProvider = ({ children }) => {
                 const response = await axios.get(`${import.meta.env.VITE_MAIN_URL}/tutorials`)
                 setAllTutorials(response.data)
             } catch (error) {
-                console.log(error)
+                Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: "Something went wrong!",
+                    footer: `${error.code}. ${error.message}`
+                })
             }
         }
 
@@ -58,7 +63,6 @@ const AuthContextProvider = ({ children }) => {
                     showConfirmButton: false,
                     timer: 1500
                 })
-                console.log('google', result.user)
             })
             .catch(error => {
                 Swal.fire({
@@ -82,7 +86,6 @@ const AuthContextProvider = ({ children }) => {
                     showConfirmButton: false,
                     timer: 1500
                 })
-                console.log('google', result.user)
             })
             .catch(error => {
                 Swal.fire({
@@ -105,7 +108,6 @@ const AuthContextProvider = ({ children }) => {
                     showConfirmButton: false,
                     timer: 1500
                 })
-                console.log('google', result.user)
             })
             .catch(error => {
                 Swal.fire({
@@ -166,8 +168,24 @@ const AuthContextProvider = ({ children }) => {
     // currently signed in user
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-            setUser(currentUser)
-            setLoading(false)
+            try {
+                setUser(currentUser)
+
+                if (currentUser?.email) {
+                    const user = { email: currentUser.email }
+
+                    axios.post(`${import.meta.env.VITE_MAIN_URL}/jwt`, user, { withCredentials: true })
+                        .then(res => console.log('login token', res.data))
+                } else {
+                    axios.post(`${import.meta.env.VITE_MAIN_URL}/logout`, {}, { withCredentials: true })
+                        .then(res => console.log('logout', res.data))
+                }
+            } catch (error) {
+                console.error('Error during auth state change handling:', error);
+            } finally {
+                setLoading(false);
+            }
+
         })
 
         return () => {

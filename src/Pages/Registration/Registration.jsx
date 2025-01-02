@@ -32,8 +32,6 @@ const Registration = () => {
         // Send user data into database
         try{
             const response = await axios.post(`${import.meta.env.VITE_MAIN_URL}/users`, user)
-
-            console.log(response.data)
         }catch(error){
             console.error('Error while sent', error.response)
         }
