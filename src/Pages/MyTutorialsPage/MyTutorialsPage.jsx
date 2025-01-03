@@ -42,9 +42,7 @@ const MyTutorialsPage = () => {
         if (user?.email) {
             const fetchMyTutorials = async () => {
                 try {
-                    const response = await axios.get(`${import.meta.env.VITE_MAIN_URL}/my-tutorials?email=${user && user?.email}`, {
-                        withCredentials: true
-                    })
+                    const response = await axios.get(`${import.meta.env.VITE_MAIN_URL}/my-tutorials?email=${user && user?.email}`)
                     setMyTutorials(response.data)
                 } catch (error) {
                     
