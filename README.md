@@ -64,4 +64,4 @@ npm run dev
 
 ## Live URL
 
-- [Live Project URL](https://user-authentication-30262.web.app) *(Replace `#` with your live deployment link)*
+- [Live Project URL](https://user-authentication-30262.web.app)
