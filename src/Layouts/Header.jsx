@@ -7,7 +7,7 @@ import { MdLightMode } from "react-icons/md";
 
 const Header = () => {
 
-    const { user, userSignOut, darkMode, setDarkMode} = useContext(authContext)
+    const { user, userSignOut, darkMode, setDarkMode } = useContext(authContext)
 
     const handleLogout = () => {
         userSignOut()
@@ -20,9 +20,9 @@ const Header = () => {
                 className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow  dark:bg-red-600">
                 <li><NavLink to={'/'}>Home</NavLink></li>
                 <li><NavLink to={'/find-tutors'}>Find Tutors</NavLink></li>
-                <li><NavLink to={'/add-tutorials'}>Add Tutorials</NavLink></li>
-                <li><NavLink to={'/my-tutorials'}>My Tutorials</NavLink></li>
-                <li><NavLink to={'/my-booked-tutors'}>My Booked Tutors</NavLink></li>
+                {user?.email && <li><NavLink to={'/add-tutorials'}>Add Tutorials</NavLink></li>}
+                {user?.email && <li><NavLink to={'/my-tutorials'}>My Tutorials</NavLink></li>}
+                {user?.email && <li><NavLink to={'/my-booked-tutors'}>My Booked Tutors</NavLink></li>}
             </ul>
         </nav>
 
@@ -32,14 +32,14 @@ const Header = () => {
             className="menu menu-horizontal px-1">
             <li><NavLink className={'text-white text-md'} to={'/'}>Home</NavLink></li>
             <li><NavLink className={'text-white text-md'} to={'/find-tutors'}>Find Tutors</NavLink></li>
-            <li><NavLink className={'text-white text-md'} to={'/add-tutorials'}>Add Tutorials</NavLink></li>
-            <li><NavLink className={'text-white text-md'} to={'/my-tutorials'}>My Tutorials</NavLink></li>
-            <li><NavLink className={'text-white text-md'} to={'/my-booked-tutors'}>My Booked Tutors</NavLink></li>
+            {user?.email && <li><NavLink className={'text-white text-md'} to={'/add-tutorials'}>Add Tutorials</NavLink></li>}
+            {user?.email && <li><NavLink className={'text-white text-md'} to={'/my-tutorials'}>My Tutorials</NavLink></li>}
+            {user?.email && <li><NavLink className={'text-white text-md'} to={'/my-booked-tutors'}>My Booked Tutors</NavLink></li>}
         </ul>
     </nav>
 
     return (
-        <header id='header' className='bg-primary py-2'>
+        <header id='header' className='bg-primary py-2 fixed top-0 w-full z-[99999]'>
             <div className="container">
                 <div className="navbar bg-primary flex flex-col md:flex-row gap-4">
                     <div className="navbar-start flex justify-center">

@@ -17,12 +17,13 @@ import TutorDetailsPage from './Pages/TutorDetailsPage/TutorDetailsPage.jsx'
 import MyBookedTutorsPage from './Pages/MyBookedTutorsPage/MyBookedTutorsPage.jsx'
 import TutorCategoryPage from './Pages/TutorCategoryPage/TutorCategoryPage.jsx'
 import ErrorPage from './Pages/ErrorPage/ErrorPage.jsx'
+import { TutorContextProvider } from './Contexts/TutorContext/TutorContext.jsx'
 
 const route = createBrowserRouter([
   {
     path: '/',
     element: <MainLayout />,
-    errorElement: <ErrorPage/>,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: '/',
@@ -34,49 +35,49 @@ const route = createBrowserRouter([
       },
       {
         path: '/registration',
-        element: <Registration/>
+        element: <Registration />
       },
       {
         path: '/add-tutorials',
         element: <PrivateRoute>
-          <AddTutorialsPage/>
+          <AddTutorialsPage />
         </PrivateRoute>
       },
       {
         path: '/my-tutorials',
         element: <PrivateRoute>
-          <MyTutorialsPage/>
+          <MyTutorialsPage />
         </PrivateRoute>
       },
       {
         path: '/update-tutorial/:id',
         element: <PrivateRoute>
-          <UpdatePage/>
+          <UpdatePage />
         </PrivateRoute>,
-        loader: ({params})=> fetch(`${import.meta.env.VITE_MAIN_URL}/tutorials/${params.id}`)
+        loader: ({ params }) => fetch(`${import.meta.env.VITE_MAIN_URL}/tutorials/${params.id}`)
       },
       {
         path: '/find-tutors',
-        element: <FindTutorsPage/>,
-        loader: ({params}) => fetch(`${import.meta.env.VITE_MAIN_URL}/tutors`)
+        element: <FindTutorsPage />,
+        loader: ({ params }) => fetch(`${import.meta.env.VITE_MAIN_URL}/tutors`)
       },
       {
         path: '/tutor-details/:id',
         element: <PrivateRoute>
-          <TutorDetailsPage/>
+          <TutorDetailsPage />
         </PrivateRoute>,
-        loader: ({params}) => fetch(`${import.meta.env.VITE_MAIN_URL}/tutor/${params.id}`)
+        loader: ({ params }) => fetch(`${import.meta.env.VITE_MAIN_URL}/tutor/${params.id}`)
       },
       {
         path: '/my-booked-tutors',
         element: <PrivateRoute>
-          <MyBookedTutorsPage/>
+          <MyBookedTutorsPage />
         </PrivateRoute>
-      }, 
+      },
       {
         path: '/find-tutors/:languageName',
-        element: <TutorCategoryPage/>,
-        loader: ({params}) => fetch(`${import.meta.env.VITE_MAIN_URL}/tutors/${params.languageName}`)
+        element: <TutorCategoryPage />,
+        loader: ({ params }) => fetch(`${import.meta.env.VITE_MAIN_URL}/tutors/${params.languageName}`)
       }
     ]
   }
@@ -85,7 +86,9 @@ const route = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <AuthContextProvider>
-      <RouterProvider router={route} />
+      <TutorContextProvider>
+        <RouterProvider router={route} />
+      </TutorContextProvider>
     </AuthContextProvider>
   </React.StrictMode>,
 )

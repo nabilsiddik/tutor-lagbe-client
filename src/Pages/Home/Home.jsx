@@ -5,6 +5,7 @@ import SliderSection from '../../Sections/SliderSection/SliderSection'
 import StatsSection from '../../Sections/StatsSection/StatsSection'
 import OffersSection from '../../Sections/OffersSection/OffersSection'
 import FaqSection from '../../Sections/FaqSection/FaqSection'
+import { tutorContext } from '../../Contexts/TutorContext/TutorContext'
 
 const Home = () => {
 
