@@ -51,23 +51,23 @@ const UpdatePage = () => {
                 <form onSubmit={handleUpdateTutorial} className='w-11/12 md:w-8/12 lg:w-6/12 mx-auto'>
                     <div className="form-control">
                         <label className="label">
-                            <span className="label-text">Tutorial Name<span className='text-red-600'> *</span></span>
+                            <span className="label-text dark:text-white">Tutorial Name<span className='text-red-600'> *</span></span>
                         </label>
-                        <input defaultValue={tutorialName} name='tutorialName' type="text" placeholder="Tutorial Name" className="input input-bordered" />
+                        <input defaultValue={tutorialName} name='tutorialName' type="text" placeholder="Tutorial Name" className="input input-bordered  dark:bg-darklight dark:border-white" />
                     </div>
 
                     <div className="form-control">
                         <label className="label">
-                            <span className="label-text">Image URL<span className='text-red-600'> *</span></span>
+                            <span className="label-text dark:text-white">Image URL<span className='text-red-600'> *</span></span>
                         </label>
-                        <input defaultValue={tutorialImage} name='tutorialImageUrl' type="text" placeholder="Image URL" className="input input-bordered" />
+                        <input defaultValue={tutorialImage} name='tutorialImageUrl' type="text" placeholder="Image URL" className="input input-bordered dark:bg-darklight dark:border-white" />
                     </div>
 
                     <div className="form-control">
                         <label className="label">
                             <span className="label-text dark:text-white">Language<span className='text-red-600'> *</span></span>
                         </label>
-                        <select className='input input-bordered' name="language" defaultValue={language}>
+                        <select className='input input-bordered dark:bg-darklight dark:border-white' name="language" defaultValue={language}>
                             <option value="english">English</option>
                             <option value="bangla">Bangla</option>
                             <option value="spanish">Spanish</option>
@@ -82,16 +82,16 @@ const UpdatePage = () => {
 
                     <div className="form-control">
                         <label className="label">
-                            <span className="label-text">Price<span className='text-red-600'> *</span></span>
+                            <span className="label-text dark:text-white">Price<span className='text-red-600'> *</span></span>
                         </label>
-                        <input defaultValue={price} name='price' type="number" placeholder="Price" className="input input-bordered" />
+                        <input defaultValue={price} name='price' type="number" placeholder="Price" className="input input-bordered dark:bg-darklight dark:border-white" />
                     </div>
 
                     <div className="form-control">
                         <label className="label">
-                            <span className="label-text">Description<span className='text-red-600'> *</span></span>
+                            <span className="label-text dark:text-white">Description<span className='text-red-600'> *</span></span>
                         </label>
-                        <textarea defaultValue={description} name='description' placeholder="Description..." className="textarea textarea-bordered" />
+                        <textarea defaultValue={description} name='description' placeholder="Description..." className="textarea textarea-bordered dark:bg-darklight dark:border-white" />
                     </div>
 
                     <div className="submit">
