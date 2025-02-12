@@ -30,7 +30,7 @@ const OffersSection = () => {
     ];
 
     return (
-        <section className="my-20 dark:bg-dark dark:text-white">
+        <section className="my-20 py-16 dark:bg-dark dark:text-white">
             <div className="container mx-auto text-center">
                 <h2 className="text-2xl md:text-3xl font-bold mb-8">
                     See what Tutor Lagbe offers

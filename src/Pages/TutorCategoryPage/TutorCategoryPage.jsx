@@ -1,14 +1,15 @@
 import React from 'react'
 import { useLoaderData } from 'react-router-dom'
+import PageTitle from '../../Components/PageTitle'
 
 const TutorCategoryPage = () => {
 
   const tutors = useLoaderData()
 
   return (
-    <div id='tutor_category_page'>
+    <div id='tutor_category_page' className='mt-[100px]'>
       <div className="container py-20">
-        <h2 className='text-center'>Tutors</h2>
+        <PageTitle title={'Tutors'}></PageTitle>
         <div className="display_tutors_by_language grid md:grid-cols-2 lg:grid-cols-3 gap-5">
           {tutors.length > 0 && tutors.map((tutor) => {
             const { tutorName, tutorImage, language, price, review, description } = tutor
