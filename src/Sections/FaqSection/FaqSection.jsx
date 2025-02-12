@@ -27,12 +27,12 @@ const FaqSection = () => {
   ];
 
   return (
-    <section className="my-20 dark:bg-dark dark:text-white">
+    <section className="my-20 dark:bg-dark dark:text-white bg-white">
       <div className="container mx-auto">
-        <h2 className="text-2xl md:text-3xl font-bold mb-8 text-center">Frequently asked questions</h2>
+        <h2 className="text-2xl md:text-3xl font-bold mb-8 text-center text-black">Frequently asked questions</h2>
         <div className="bg-white rounded-lg p-6 md:p-8 dark:bg-dark dark:text-white">
           {faqs.map((faq, index) => (
-            <div key={index} className="collapse collapse-arrow bg-base-200 mb-4 dark:bg-darklight dark:text-white">
+            <div key={index} className="collapse collapse-arrow mb-4 dark:bg-darklight dark:text-white bg-white text-black shadow-lg border">
               <input type="radio" name="my-accordion-2" />
               <div className="collapse-title text-xl font-medium">{faq.question}</div>
               <div className="collapse-content">

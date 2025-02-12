@@ -2,6 +2,7 @@ import axios from 'axios'
 import React, { useContext, useEffect, useState } from 'react'
 import { authContext } from './../../Contexts/AuthContext/AuthContext';
 import { Link } from 'react-router-dom';
+import PageTitle from '../../Components/PageTitle';
 
 const MyBookedTutorsPage = () => {
 
@@ -31,7 +32,7 @@ const MyBookedTutorsPage = () => {
   return (
     <div id='my_booked_tutors' className='mt-[100px] py-10'>
       <div className="container">
-      <h1 className='text-center mb-10'>My Tutorials</h1>
+      <PageTitle title='My Booked Tutorials'/>
         <div className="display_my_booked_tutors">
           <div className="overflow-x-auto">
             <table className="table flex items-center">

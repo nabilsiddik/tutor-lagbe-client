@@ -3,6 +3,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import TutorCard from '../../Components/TutorCard'
 import { authContext } from './../../Contexts/AuthContext/AuthContext';
 import { tutorCategories } from './../../Data/tutorCategories';
+import PageTitle from '../../Components/PageTitle';
 
 const FindTutorsPage = () => {
 
@@ -37,7 +38,7 @@ const FindTutorsPage = () => {
     return (
         <div id='find_tutors_page' className='mt-[100px]'>
             <div className="container py-10">
-                <h1 className='text-center mb-3'>All Tutors</h1>
+                <PageTitle title='All Tutors'></PageTitle>
                 <div className="flex justify-between mb-10 gap-5 md:gap-10 lg:gap-20 flex-col md:flex-row">
                     <div className='w-full md:w-4/12'>
                         <label className='label font-bold'>Search By Name:</label>

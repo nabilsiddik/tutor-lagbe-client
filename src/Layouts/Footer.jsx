@@ -11,17 +11,17 @@ const Footer = () => {
             <div className="container footer text-neutral-content p-10">
                 <nav>
                     <img src={footerLogo} alt="" />
-                    <p>Leargest Tutor finding website <br /> in the world.</p>
+                    <p  className='text-white'>Leargest Tutor finding website <br /> in the world.</p>
                 </nav>
                 <nav>
-                    <h6 className="footer-title">Important Links</h6>
-                    <li><NavLink to={'/find-tutors'}>Find Tutors</NavLink></li>
-                    <li><NavLink to={'/my-tutorials'}>My Tutorials</NavLink></li>
-                    <li><NavLink to={'/my-booked-tutors'}>My Booked Tutors</NavLink></li>
+                    <h6 className="footer-title text-white">Important Links</h6>
+                    <li><NavLink className='text-white' to={'/find-tutors'}>Find Tutors</NavLink></li>
+                    <li><NavLink className='text-white' to={'/my-tutorials'}>My Tutorials</NavLink></li>
+                    <li><NavLink className='text-white' to={'/my-booked-tutors'}>My Booked Tutors</NavLink></li>
                 </nav>
 
                 <div>
-                    <h6 className="footer-title">Social Links</h6>
+                    <h6 className="footer-title text-white">Social Links</h6>
                     <ul className="mt-5 flex items-center gap-3 text-lg">
                         <li className='w-[30px] h-[30px] flex items-center justify-center bg-white rounded-full text-black'><a href="https://www.facebook.com/codewithnabil"><FaFacebookF />
                         </a></li>

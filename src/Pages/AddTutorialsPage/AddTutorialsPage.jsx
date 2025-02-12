@@ -2,6 +2,7 @@ import React, { useContext } from 'react'
 import { authContext } from '../../Contexts/AuthContext/AuthContext'
 import axios from 'axios'
 import Swal from 'sweetalert2'
+import PageTitle from '../../Components/PageTitle'
 
 const AddTutorialsPage = () => {
 
@@ -68,7 +69,7 @@ const AddTutorialsPage = () => {
     return (
         <div id='add_tutorial' className='mt-[100px]'>
             <div className="container py-10">
-                <h1 className='mb-10 text-center'>Add Tutorial</h1>
+                <PageTitle title='Add Tutorial'></PageTitle>
                 <form onSubmit={handleAddTutorial} className='w-11/12 md:w-8/12 lg:w-6/12 mx-auto'>
 
                     <div className="form-control">

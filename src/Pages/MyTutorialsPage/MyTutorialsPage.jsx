@@ -3,6 +3,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import { authContext } from '../../Contexts/AuthContext/AuthContext'
 import Swal from 'sweetalert2'
 import { Link } from 'react-router-dom'
+import PageTitle from '../../Components/PageTitle'
 
 const MyTutorialsPage = () => {
     const [myTutorials, setMyTutorials] = useState([])
@@ -57,7 +58,7 @@ const MyTutorialsPage = () => {
     return (
         <div id='my_tutorials' className='mt-[100px]'>
             <div className="container py-10">
-                <h1 className='text-center mb-10'>My Tutorials</h1>
+                <PageTitle title='My Tutorials'></PageTitle>
 
                 <div className="display_my_tutorials">
                     <div className="overflow-x-auto">

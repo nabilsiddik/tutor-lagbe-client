@@ -3,6 +3,7 @@ import React, { useContext } from 'react'
 import { Link, useLoaderData } from 'react-router-dom'
 import { authContext } from '../../Contexts/AuthContext/AuthContext'
 import Swal from 'sweetalert2'
+import PageTitle from '../../Components/PageTitle'
 
 const TutorDetailsPage = () => {
 
@@ -47,7 +48,7 @@ const TutorDetailsPage = () => {
     return (
         <div id='tutor_details' className='mt-[100px] py-10'>
             <div className="container">
-                <h1 className='mb-10 text-center'>Tutor Details</h1>
+                <PageTitle title={'Tutor Details'}/>
                 <div className="bg-white rounded-lg shadow-md flex flex-col md:flex-row  md:items-center mx-auto border-primary border mb-5 py-16 lg:px-20 md:px-10 px-5 gap-10">
                     <div className="mx-auto md:mx-0">
                         <img
