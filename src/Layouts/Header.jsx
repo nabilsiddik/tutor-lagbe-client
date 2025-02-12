@@ -41,7 +41,7 @@ const Header = () => {
     return (
         <header id='header' className='bg-primary h-[100px] fixed top-0 w-full z-[99999]'>
             <div className="container">
-                <div className="navbar bg-primary flex flex-col md:flex-row gap-4">
+                <div className="navbar flex flex-col md:flex-row gap-4">
                     <div className="navbar-start flex justify-center">
                         <div className="dropdown">
                             <div tabIndex={0} role="button" className="btn text-white btn-ghost lg:hidden">

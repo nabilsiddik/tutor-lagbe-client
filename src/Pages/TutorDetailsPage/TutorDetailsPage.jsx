@@ -48,22 +48,21 @@ const TutorDetailsPage = () => {
         <div id='tutor_details' className='mt-[100px] py-10'>
             <div className="container">
                 <h1 className='mb-10 text-center'>Tutor Details</h1>
-
-                <div className="bg-white rounded-lg shadow-md flex flex-col md:flex-row items-start md:items-centermx-auto border-primary border mb-5 gap-10 py-16 lg:px-20 md:px-10 px-5">
-                    <div className="">
+                <div className="bg-white rounded-lg shadow-md flex flex-col md:flex-row  md:items-center mx-auto border-primary border mb-5 py-16 lg:px-20 md:px-10 px-5 gap-10">
+                    <div className="mx-auto md:mx-0">
                         <img
                             src={tutorImage}
                             alt="Teacher"
-                            className="rounded-full w-30"
+                            className="rounded-full w-[100px] lg:w-[130px]"
                         />
-                         <p className='mt-3'>
+                         <p className='mt-3 text-center md:text-left'>
                             <b>Speaks:</b>
                             <span className="text-teal-600 font-medium"> {language}</span>
                         </p>
-                        <p><b>Total Review:</b> {review && review}</p>
+                        <p className='text-center md:text-left'><b>Total Review:</b> {review && review}</p>
                     </div>
 
-                    <div className="">
+                    <div className="flex flex-col items-center mx-auto md:block md:mx-0">
                         <div className="flex flex-col md:flex-row md:items-center justify-between mb-2">
                             <h3 className="text-lg md:text-xl font-semibold">{tutorName}</h3>
                         </div>
