@@ -50,7 +50,7 @@ const FindTutorsPage = () => {
 
 
                 <div className="display_tutors grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-                    {!user ? <LoadingPage/> : allTutors.length > 0 && allTutors.map((tutor) => {
+                    {allTutors.length > 0 && allTutors.map((tutor) => {
                         return <TutorCard key={tutor._id} tutor={tutor} />
                     })}
 
