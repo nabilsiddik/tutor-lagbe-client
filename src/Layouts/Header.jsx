@@ -39,7 +39,7 @@ const Header = () => {
     </nav>
 
     return (
-        <header id='header' className='bg-primary py-2 fixed top-0 w-full z-[99999]'>
+        <header id='header' className='bg-primary h-[100px] fixed top-0 w-full z-[99999]'>
             <div className="container">
                 <div className="navbar bg-primary flex flex-col md:flex-row gap-4">
                     <div className="navbar-start flex justify-center">

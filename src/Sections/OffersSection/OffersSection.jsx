@@ -30,7 +30,7 @@ const OffersSection = () => {
     ];
 
     return (
-        <section className="py-12  dark:bg-dark dark:text-white">
+        <section className="my-20 py-16 dark:bg-dark dark:text-white">
             <div className="container mx-auto text-center">
                 <h2 className="text-2xl md:text-3xl font-bold mb-8">
                     See what Tutor Lagbe offers
@@ -39,7 +39,7 @@ const OffersSection = () => {
                     {offers.map((offer) => (
                         <div
                             key={offer.id}
-                            className="p-6 shadow-md rounded-lg flex flex-col items-center  dark:bg-darklight dark:text-white"
+                            className="px-6 py-8 shadow-md rounded-lg flex flex-col items-center  dark:bg-darklight dark:text-white bg-white"
                         >
                             <img
                                 src={offer.image}

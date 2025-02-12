@@ -15,9 +15,11 @@ const TutorDetailsPage = () => {
     const bookedTutor = { tutorId, tutorName, tutorImage, language, price, email, tutorEmail }
 
     const handleBookTutor = async () => {
-        // save booked tutor to databse
-        await axios.post(`${import.meta.env.VITE_MAIN_URL}/booked-tutors`, bookedTutor)
-            .then(res => {
+        try {
+            // save booked tutor to databse
+            const response = await axios.post(`${import.meta.env.VITE_MAIN_URL}/booked-tutors`, bookedTutor)
+
+            if(response.status === 200){
                 Swal.fire({
                     position: "center center",
                     icon: "success",
@@ -25,11 +27,25 @@ const TutorDetailsPage = () => {
                     showConfirmButton: false,
                     timer: 1500
                 })
-            })
+            }
+                
+        }catch(err){
+            if(err.response){
+                if(err.response.status === 400){
+                    Swal.fire({
+                        position: "center center",
+                        icon: "error",
+                        title: err.response.data.message,
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                }
+            }
+        }
     }
 
     return (
-        <div id='tutor_details'>
+        <div id='tutor_details' className='mt-[100px] py-10'>
             <div className="container py-10 flex gap-5">
                 <div className="bg-white rounded-lg shadow-md p-4 md:p-6 flex flex-col md:flex-row items-start md:items-center gap-4 w-full mx-auto">
                     <div className="flex-shrink-0">

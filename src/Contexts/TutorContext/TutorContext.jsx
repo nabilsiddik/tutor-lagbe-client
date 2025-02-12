@@ -42,7 +42,7 @@ const TutorContextProvider = ({children}) => {
 
         fetchAllReviews()
 
-    }, [user?.email, totalReviews, allTutors, allUsers])
+    }, [user?.email])
 
 
     const tutorContextValues = {

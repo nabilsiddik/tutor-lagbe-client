@@ -10,7 +10,7 @@ import { tutorContext } from '../../Contexts/TutorContext/TutorContext'
 const Home = () => {
 
   return (
-    <div id='home_page'>
+    <div id='home_page' className='mt-[100px]'>
       <SliderSection />
       <div className="container">
         <StatsSection />

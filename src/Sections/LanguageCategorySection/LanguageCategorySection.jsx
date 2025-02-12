@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'; import { FaArrowRight } from "react-ico
 const LanguageCategorySection = () => {
 
     return (
-        <div id='language_category_section' className='py-16'>
+        <div id='language_category_section' className='my-20'>
             <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-5'>
                 {tutorCategories.length > 0 && tutorCategories.map((category, index) => {
                     const { logo, title, subtitle, slug } = category

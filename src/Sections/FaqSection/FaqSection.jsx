@@ -27,7 +27,7 @@ const FaqSection = () => {
   ];
 
   return (
-    <section className="py-12 dark:bg-dark dark:text-white">
+    <section className="my-20 dark:bg-dark dark:text-white">
       <div className="container mx-auto">
         <h2 className="text-2xl md:text-3xl font-bold mb-8 text-center">Frequently asked questions</h2>
         <div className="bg-white rounded-lg p-6 md:p-8 dark:bg-dark dark:text-white">

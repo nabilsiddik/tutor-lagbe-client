@@ -29,7 +29,7 @@ const MyBookedTutorsPage = () => {
 
 
   return (
-    <div id='my_booked_tutors'>
+    <div id='my_booked_tutors' className='mt-[100px] py-10'>
       <div className="container py-10">
         <div className="display_my_booked_tutors">
           <div className="overflow-x-auto">
