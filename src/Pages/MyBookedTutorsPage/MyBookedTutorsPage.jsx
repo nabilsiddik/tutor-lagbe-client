@@ -10,7 +10,7 @@ const MyBookedTutorsPage = () => {
 
   
   const handleReviewTutorial = async(tutor) => {
-    const response = await axios.post(`${import.meta.env.VITE_MAIN_URL}/my-booked-tutors/${tutor._id}`, tutor)
+    const response = await axios.patch(`${import.meta.env.VITE_MAIN_URL}/my-booked-tutors/${tutor._id}`, tutor)
   }
 
  

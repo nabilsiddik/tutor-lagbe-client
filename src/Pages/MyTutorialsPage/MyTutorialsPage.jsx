@@ -93,7 +93,6 @@ const MyTutorialsPage = () => {
                                         <td className='flex-1 md:w-5/12 w-full'>
                                             <span>{description && description}</span>
                                             <br />
-                                            <span className="badge badge-ghost badge-sm">{review && review} Review</span>
                                         </td>
                                         <td>
                                             <Link to={`/update-tutorial/${_id}`}>
