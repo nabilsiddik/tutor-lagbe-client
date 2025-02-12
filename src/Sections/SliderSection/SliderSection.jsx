@@ -2,6 +2,7 @@ import React from 'react'
 import slide1 from '../../assets/images/slide-2.jpg'
 import slide2 from '../../assets/images/online-tutor-1.jpg'
 import slide3 from '../../assets/images/online-tutor-2.jpg'
+import { Link } from 'react-router-dom'
 
 const SliderSection = () => {
     return (
@@ -20,7 +21,9 @@ const SliderSection = () => {
                                 <p className="mb-5 w-10/12 md:w-8/12 lg:w-8/12 mx-auto px-3">
                                     Browse expert tutors in various Languages to enhance your learning journey.
                                 </p>
-                                <button className="btn bg-primary text-white border-none hover:bg-primary">Get Started</button>
+                                <Link to='/find-tutors'>
+                                    <button className="btn bg-primary text-white border-none hover:bg-primary">Get Started</button>
+                                </Link>
                             </div>
                         </div>
                     </div>
@@ -40,9 +43,11 @@ const SliderSection = () => {
                             <div className="max-w-3xl">
                                 <h1 className="mb-5 md:text-5xl text-3xl font-bold w-10/12 md:w-8/12 lg:w-8/12 mx-auto">Learn a New Language with Native Tutors</h1>
                                 <p className="mb-5 w-9/12 md:w-8/12 lg:w-8/12 mx-auto px-3">
-                                Connect with expert language tutors worldwide and practice speaking like a native
+                                    Connect with expert language tutors worldwide and practice speaking like a native
                                 </p>
-                                <button className="btn bg-primary text-white border-none hover:bg-primary">Get Started</button>
+                                <Link to='/find-tutors'>
+                                    <button className="btn bg-primary text-white border-none hover:bg-primary">Get Started</button>
+                                </Link>
                             </div>
                         </div>
                     </div>
@@ -63,9 +68,11 @@ const SliderSection = () => {
                             <div className="max-w-3xl">
                                 <h1 className="mb-5 md:text-5xl text-3xl font-bold w-10/12 md:w-8/12 lg:w-8/12 mx-auto">Speak with Confidence, Master Any Language</h1>
                                 <p className="mb-5 w-10/12 md:w-8/12 lg:w-8/12 mx-auto px-3">
-                                Enhance your pronunciation, grammar, and conversation skills with professional tutors.
+                                    Enhance your pronunciation, grammar, and conversation skills with professional tutors.
                                 </p>
-                                <button className="btn bg-primary text-white border-none hover:bg-primary">Get Started</button>
+                                <Link to='/find-tutors'>
+                                    <button className="btn bg-primary text-white border-none hover:bg-primary">Get Started</button>
+                                </Link>
                             </div>
                         </div>
                     </div>

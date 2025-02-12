@@ -49,7 +49,7 @@ const TutorDetailsPage = () => {
         <div id='tutor_details' className='mt-[100px] py-10'>
             <div className="container">
                 <PageTitle title={'Tutor Details'}/>
-                <div className="bg-white rounded-lg shadow-md flex flex-col md:flex-row  md:items-center mx-auto border-primary border mb-5 py-16 lg:px-20 md:px-10 px-5 gap-10">
+                <div className="bg-white  dark:bg-darklight dark:border-white border rounded-lg shadow-md flex flex-col md:flex-row  md:items-center mx-auto border-primary border mb-5 py-16 lg:px-20 md:px-10 px-5 gap-10">
                     <div className="mx-auto md:mx-0">
                         <img
                             src={tutorImage}

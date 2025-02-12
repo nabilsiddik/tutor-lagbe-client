@@ -2,6 +2,7 @@ import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
 import { authContext } from './../../Contexts/AuthContext/AuthContext';
 import { FaGoogle } from 'react-icons/fa';
+import PageTitle from '../../Components/PageTitle';
 
 const Login = () => {
 
@@ -16,9 +17,9 @@ const Login = () => {
     }
 
     return (
-        <div id='login_page'>
+        <div id='login_page' className='mt-[100px]'>
             <div className="container py-10">
-                <h1 className='text-center mb-10'>Login</h1>
+                <PageTitle title="Login"/>
 
                 <div className='flex justify-center'>
                     <button onClick={() => signInWithGoogle()} className='btn btn-lg'><FaGoogle />Sign In Google

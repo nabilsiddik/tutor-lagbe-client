@@ -24,10 +24,17 @@ h2{
     font-weight: bold;
 }
 h3{
-    font-size: 24px;
+    font-size: 22px;
     font-weight: bold;
 }
 
 h1, h2, h3, h4, h5, h6{
     font-family: "Noto Sans", serif;
+}
+input[type='text'], input[type='number'], input[type='email'], textarea{
+    background-color: white;
+}
+
+li .active{
+    border-bottom: 2px solid white;
 }

@@ -18,11 +18,11 @@ const LanguageCategorySection = () => {
                                     <img className='w-[66px]' src={logo} alt="" />
                                 </div>
                                 <div>
-                                    <h3 className='text-black'>{title}</h3>
-                                    <p  className='text-black'>{subtitle}</p>
+                                    <h3 className='text-black dark:text-white'>{title}</h3>
+                                    <p  className='text-black dark:text-white'>{subtitle}</p>
                                 </div>
                             </div>
-                            <div className='text-black'>
+                            <div className='text-black dark:text-whtie'>
                                 <FaArrowRight />
                             </div>
                         </div>

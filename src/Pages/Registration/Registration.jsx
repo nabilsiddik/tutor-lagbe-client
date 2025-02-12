@@ -4,6 +4,7 @@ import { authContext } from '../../Contexts/AuthContext/AuthContext'
 import { FaGoogle } from 'react-icons/fa'
 import axios from 'axios'
 import Swal from 'sweetalert2'
+import PageTitle from '../../Components/PageTitle'
 
 const Registration = () => {
 
@@ -41,9 +42,9 @@ const Registration = () => {
 
 
     return (
-        <div id='registration'>
+        <div id='registration' className='mt-[100px]'>
             <div className="container py-10">
-                <h1 className='text-center mb-10'>Registration</h1>
+                <PageTitle title="Registration"></PageTitle>
 
                 <div className='flex justify-center'>
                     <button onClick={() => signInWithGoogle()} className='btn btn-lg'><FaGoogle />Signup In Google

@@ -20,6 +20,29 @@ const Header = () => {
     return (
         <header id='header' className={`h-20overflow-hidden bg-primary text-white py-3 fixed top-0 w-full z-[99999]`}>
             <nav className={`mobile-menu order-3 lg:order-2 ${mobileMenu ? 'translate-x-[0]' : 'translate-x-[120%]'} fixed top-[103px] right-0 border-l-2 w-[80%] py-5 rounded-m min-h-screen transition-all duration-[.3s] ease-in-out z-[9999] bg-primary`}>
+
+                <div className='flex items-center gap-3 ml-5 mb-7'>
+                    {user?.email ?
+                        <div className='flex items-center gap-5'>
+                            <button onClick={handleLogout} className='btn'>Sign Out</button>
+                            <div className="tooltip tooltip-bottom" data-tip={user?.email && user.displayName}>
+                                <div className="avatar">
+                                    <div className="ring-primary ring-offset-base-100 w-10 rounded-full ring ring-offset-2">
+                                        <img src={user?.photoURL} alt="profile" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        :
+                        <Link to={'/login'}><button className='btn'>Sign In</button></Link>
+                    }
+
+                    <div className="dark_light_mode flex items-center gap-3 text-3xl ml-5">
+                        <MdDarkMode onClick={() => setDarkMode(true)} className='cursor-pointer' />
+                        <MdLightMode onClick={() => setDarkMode(false)} className='cursor-pointer' />
+                    </div>
+                </div>
+
                 <ul className='flex flex-col gap-4 ml-5'>
                     <li><NavLink className={'text-white text-md'} to={'/'}>Home</NavLink></li>
                     <li><NavLink className={'text-white text-md'} to={'/find-tutors'}>Find Tutors</NavLink></li>
@@ -55,12 +78,12 @@ const Header = () => {
                 </div>
                 <nav className="order-3 lg:order-2 hidden lg:block">
                     <ul
-                        className="dark:bg-red-600 flex items-center gap-5">
-                        <li><NavLink to={'/'}>Home</NavLink></li>
-                        <li><NavLink to={'/find-tutors'}>Find Tutors</NavLink></li>
-                        {user?.email && <li><NavLink to={'/add-tutorials'}>Add Tutorials</NavLink></li>}
-                        {user?.email && <li><NavLink to={'/my-tutorials'}>My Tutorials</NavLink></li>}
-                        {user?.email && <li><NavLink to={'/my-booked-tutors'}>My Booked Tutors</NavLink></li>}
+                        className="flex items-center gap-5">
+                        <li className='hover:border-b-2 border-white'><NavLink to={'/'}>Home</NavLink></li>
+                        <li className='hover:border-b-2 border-white'><NavLink to={'/find-tutors'}>Find Tutors</NavLink></li>
+                        {user?.email && <li className='hover:border-b-2 border-white'><NavLink to={'/add-tutorials'}>Add Tutorials</NavLink></li>}
+                        {user?.email && <li className='hover:border-b-2 border-white'><NavLink to={'/my-tutorials'}>My Tutorials</NavLink></li>}
+                        {user?.email && <li className='hover:border-b-2 border-white'><NavLink to={'/my-booked-tutors'}>My Booked Tutors</NavLink></li>}
                     </ul>
                 </nav>
 
