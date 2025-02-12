@@ -8,12 +8,13 @@ const FindTutorsPage = () => {
 
     const [allTutors, setAllTutors] = useState([])
     const [searchedLanguage, setSearchLanguage] = useState('')
+    const [sortBy, setSortBy] = useState('')
 
     useEffect(() => {
         const findTutors = async () => {
             try{
                 const res = await axios.get(`${import.meta.env.VITE_MAIN_URL}/tutors`, {
-                    params: {language: searchedLanguage}
+                    params: {language: searchedLanguage, sortBy}
                 })
 
                 setAllTutors(res.data)
@@ -23,10 +24,14 @@ const FindTutorsPage = () => {
         }
 
         findTutors()
-    }, [searchedLanguage])
+    }, [searchedLanguage, sortBy])
 
     const handleSearchTutor = (e) => {
         setSearchLanguage(e.target.value.toLowerCase())
+    }
+
+    const handleSortChange = (e) => {
+        setSortBy(e.target.value.toLowerCase())
     }
 
     return (
@@ -40,7 +45,7 @@ const FindTutorsPage = () => {
                     </div>
                     <div className='w-full md:w-4/12'>
                         <label className='label font-bold'>Sort By Language:</label>
-                        <select className='select select-bordered w-full'>
+                        <select onChange={handleSortChange} className='select select-bordered w-full'>
                             {tutorCategories.length > 0 && tutorCategories.map((item, index) => {
                                 return <option key={index} value={item.language.toLowerCase()}>{item.language}</option>
                             })}

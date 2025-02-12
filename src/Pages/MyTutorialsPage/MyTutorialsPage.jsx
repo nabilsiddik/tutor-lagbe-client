@@ -55,7 +55,7 @@ const MyTutorialsPage = () => {
 
 
     return (
-        <div id='my_tutorials'>
+        <div id='my_tutorials' className='mt-[100px]'>
             <div className="container py-10">
                 <h1 className='text-center mb-10'>My Tutorials</h1>
 

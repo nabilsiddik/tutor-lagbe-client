@@ -45,25 +45,10 @@ const UpdatePage = () => {
     }
 
     return (
-        <div id='update_page'>
+        <div id='update_page' className='mt-[100px]'>
             <div className="container py-10">
                 <h1 className='mb-10 text-center'>Update Tutorial</h1>
                 <form onSubmit={handleUpdateTutorial} className='w-11/12 md:w-8/12 lg:w-6/12 mx-auto'>
-
-                    <div className="form-control">
-                        <label className="label">
-                            <span className="label-text"> Tutor Name</span>
-                        </label>
-                        <input type="text" placeholder="Tutor Name" defaultValue={user && user?.displayName} className="input input-bordered" disabled />
-                    </div>
-
-                    <div className="form-control">
-                        <label className="label">
-                            <span className="label-text">Tutor Email</span>
-                        </label>
-                        <input type="text" defaultValue={user && user?.email} placeholder="Tutor Email" className="input input-bordered" disabled />
-                    </div>
-
                     <div className="form-control">
                         <label className="label">
                             <span className="label-text">Tutorial Name<span className='text-red-600'> *</span></span>
@@ -107,13 +92,6 @@ const UpdatePage = () => {
                             <span className="label-text">Description<span className='text-red-600'> *</span></span>
                         </label>
                         <textarea defaultValue={description} name='description' placeholder="Description..." className="textarea textarea-bordered" />
-                    </div>
-
-                    <div className="form-control">
-                        <label className="label">
-                            <span className="label-text">Review</span>
-                        </label>
-                        <input name='review' defaultValue={0} type="number" placeholder="Review" disabled className="input input-bordered" />
                     </div>
 
                     <div className="submit">

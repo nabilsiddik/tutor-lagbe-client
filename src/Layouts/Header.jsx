@@ -60,9 +60,9 @@ const Header = () => {
                             </div>
                             {mobileMenu}
                         </div>
-                        <a className="text-xl">
-                            <img src={logo} alt="" />
-                        </a>
+                        <Link to='/'>
+                            <img src={logo} alt="logo" />
+                        </Link>
                     </div>
                     <div className="navbar-center hidden lg:flex">
                         {mainMenu}

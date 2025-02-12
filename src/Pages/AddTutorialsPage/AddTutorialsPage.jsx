@@ -66,7 +66,7 @@ const AddTutorialsPage = () => {
     }
 
     return (
-        <div id='add_tutorial'>
+        <div id='add_tutorial' className='mt-[100px]'>
             <div className="container py-10">
                 <h1 className='mb-10 text-center'>Add Tutorial</h1>
                 <form onSubmit={handleAddTutorial} className='w-11/12 md:w-8/12 lg:w-6/12 mx-auto'>
