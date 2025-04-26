@@ -18,6 +18,7 @@ import MyBookedTutorsPage from './Pages/MyBookedTutorsPage/MyBookedTutorsPage.js
 import TutorCategoryPage from './Pages/TutorCategoryPage/TutorCategoryPage.jsx'
 import ErrorPage from './Pages/ErrorPage/ErrorPage.jsx'
 import { TutorContextProvider } from './Contexts/TutorContext/TutorContext.jsx'
+import DashboardLayout from './Dashboard/DashboardLayout.jsx'
 
 const route = createBrowserRouter([
   {
@@ -80,6 +81,12 @@ const route = createBrowserRouter([
         loader: ({ params }) => fetch(`${import.meta.env.VITE_MAIN_URL}/tutors/${params.languageName}`)
       }
     ]
+  },
+  {
+    path: '/dashboard',
+    element: <PrivateRoute>
+      <DashboardLayout/>
+    </PrivateRoute>
   }
 ])
 

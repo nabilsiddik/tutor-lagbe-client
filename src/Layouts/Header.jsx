@@ -84,6 +84,8 @@ const Header = () => {
                         {user?.email && <li className='hover:border-b-2 border-white'><NavLink to={'/add-tutorials'}>Add Tutorials</NavLink></li>}
                         {user?.email && <li className='hover:border-b-2 border-white'><NavLink to={'/my-tutorials'}>My Tutorials</NavLink></li>}
                         {user?.email && <li className='hover:border-b-2 border-white'><NavLink to={'/my-booked-tutors'}>My Booked Tutors</NavLink></li>}
+
+                        {user?.email && <li className='hover:border-b-2 border-white'><NavLink to={'/dashboard'}>Dashboard</NavLink></li>}
                     </ul>
                 </nav>
 
