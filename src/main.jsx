@@ -19,6 +19,8 @@ import TutorCategoryPage from './Pages/TutorCategoryPage/TutorCategoryPage.jsx'
 import ErrorPage from './Pages/ErrorPage/ErrorPage.jsx'
 import { TutorContextProvider } from './Contexts/TutorContext/TutorContext.jsx'
 import DashboardLayout from './Dashboard/DashboardLayout.jsx'
+import AddLession from './Dashboard/TutorDashboard/AddLession.jsx'
+import AllLessions from './Dashboard/TutorDashboard/AllLessions.jsx'
 
 const route = createBrowserRouter([
   {
@@ -86,7 +88,18 @@ const route = createBrowserRouter([
     path: '/dashboard',
     element: <PrivateRoute>
       <DashboardLayout/>
-    </PrivateRoute>
+    </PrivateRoute>,
+    children: [
+      {
+        path: 'add-lession',
+        element: <AddLession/>
+      },
+      {
+        path: 'all-lession',
+        element: <AllLessions/>
+      },
+      
+    ]
   }
 ])
 

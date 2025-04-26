@@ -24,8 +24,8 @@ const DashboardSidebar = () => {
         {/* tutor routes  */}
         {tutor &&
           <ul>
-            <DashboardMenuItem icon={<FaUsers />} menuTitle={'Add Lessions'} />
-            <DashboardMenuItem icon={<FaUsers />} menuTitle={'All Lessions'} />
+            <DashboardMenuItem icon={<FaUsers />} menuTitle={'Add Lession'} link='add-lession' />
+            <DashboardMenuItem icon={<FaUsers />} menuTitle={'All Lessions'} link='all-lession' />
           </ul>
         }
       </div>
