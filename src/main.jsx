@@ -1,6 +1,5 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import App from './App.jsx'
 import './index.css'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import MainLayout from './Layouts/MainLayout.jsx'
@@ -20,7 +19,10 @@ import ErrorPage from './Pages/ErrorPage/ErrorPage.jsx'
 import { TutorContextProvider } from './Contexts/TutorContext/TutorContext.jsx'
 import DashboardLayout from './Dashboard/DashboardLayout.jsx'
 import AddLession from './Dashboard/TutorDashboard/AddLession.jsx'
-import AllLessions from './Dashboard/TutorDashboard/AllLessions.jsx'
+import MyLessons from './Dashboard/TutorDashboard/MyLessons.jsx'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+
+const queryClient = new QueryClient()
 
 const route = createBrowserRouter([
   {
@@ -87,28 +89,30 @@ const route = createBrowserRouter([
   {
     path: '/dashboard',
     element: <PrivateRoute>
-      <DashboardLayout/>
+      <DashboardLayout />
     </PrivateRoute>,
     children: [
       {
         path: 'add-lession',
-        element: <AddLession/>
+        element: <AddLession />
       },
       {
         path: 'all-lession',
-        element: <AllLessions/>
+        element: <MyLessons />
       },
-      
+
     ]
   }
 ])
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <AuthContextProvider>
-      <TutorContextProvider>
-        <RouterProvider router={route} />
-      </TutorContextProvider>
-    </AuthContextProvider>
+    <QueryClientProvider client = {queryClient}>
+      <AuthContextProvider>
+        <TutorContextProvider>
+          <RouterProvider router={route} />
+        </TutorContextProvider>
+      </AuthContextProvider>
+    </QueryClientProvider>
   </React.StrictMode>,
 )

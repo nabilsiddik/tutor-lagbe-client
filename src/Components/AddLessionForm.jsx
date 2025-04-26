@@ -1,10 +1,14 @@
-import React from 'react'
+import axios from 'axios';
+import React, { useContext, useState } from 'react'
 import { IoMdAddCircleOutline } from "react-icons/io";
+import Swal from 'sweetalert2';
+import { authContext } from '../Contexts/AuthContext/AuthContext';
 
 const AddLessionForm = () => {
+    const {user} = useContext(authContext)
 
     // add lesson
-    const handleAddLesson = (e) => {
+    const handleAddLesson = async (e) => {
         e.preventDefault()
         const form = e.target
         const title = form.title.value
@@ -13,17 +17,54 @@ const AddLessionForm = () => {
         const description = form.description.value
         const duration = form.duration.value
         const price = form.amount.value
+        const features = form.features.value
+        const featuresArr = features.split(',').map(item => item.trim())
 
-        const lesson = {
-            title,
-            language,
-            category,
-            description,
-            duration,
-            price
+        if (!title || !language || !category || !description || !duration || !price) {
+            Swal.fire({
+                position: "center",
+                icon: "error",
+                title: "Please fill out the required fields",
+                showConfirmButton: false,
+                timer: 1500
+            });
+        } else {
+            const lesson = {
+                title,
+                language,
+                category,
+                description,
+                duration,
+                price,
+                featuresArr,
+                tutor: {
+                    name: user?.displayName,
+                    email: user?.email,
+                    profile: user?.photoURL
+                }
+            }
+
+            console.log(lesson)
+
+            try {
+                // Send data to database
+                const { data } = await axios.post('http://localhost:5000/lesson', lesson)
+
+                if (data.insertedId) {
+                    Swal.fire({
+                        position: "center",
+                        icon: "success",
+                        title: "Lesson Added",
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                }
+            } catch (error) {
+                console.error('Error while fetching lessons', error)
+            }
         }
 
-        console.log(lesson)
+
     }
 
     return (
@@ -37,7 +78,7 @@ const AddLessionForm = () => {
                 <label htmlFor="language" className='label text-gray-500 block'>Language <span className='text-primary mb-2'>*</span></label>
 
                 <select name="language" className='select select-bordered w-full'>
-                    <option>Select Language</option>
+                    <option value="" disabled selected>Select Language</option>
                     <option value='english'>English</option>
                     <option value='bangla'>Bangla</option>
                     <option value='japanese'>Japanese</option>
@@ -50,7 +91,7 @@ const AddLessionForm = () => {
                 <label htmlFor="category" className='label text-gray-500 block'>Category <span className='text-primary mb-2'>*</span></label>
 
                 <select name="category" className='select select-bordered w-full'>
-                    <option>Select Category</option>
+                    <option value="" disabled selected>Select Category</option>
                     <option value='language essential'>Language Essential</option>
                     <option value='tutor class'>Tutor Class</option>
                 </select>
