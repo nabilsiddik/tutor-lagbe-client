@@ -21,6 +21,8 @@ import DashboardLayout from './Dashboard/DashboardLayout.jsx'
 import AddLession from './Dashboard/TutorDashboard/AddLession.jsx'
 import MyLessons from './Dashboard/TutorDashboard/MyLessons.jsx'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import AllUsers from './Dashboard/AdminDashboard/AllUsers.jsx'
+import { UserContextProvider } from './Contexts/UserContext/UserContext.jsx'
 
 const queryClient = new QueryClient()
 
@@ -100,6 +102,11 @@ const route = createBrowserRouter([
         path: 'all-lession',
         element: <MyLessons />
       },
+      ,
+      {
+        path: 'all-users',
+        element: <AllUsers />
+      },
 
     ]
   }
@@ -107,11 +114,13 @@ const route = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <QueryClientProvider client = {queryClient}>
+    <QueryClientProvider client={queryClient}>
       <AuthContextProvider>
-        <TutorContextProvider>
-          <RouterProvider router={route} />
-        </TutorContextProvider>
+        <UserContextProvider>
+          <TutorContextProvider>
+            <RouterProvider router={route} />
+          </TutorContextProvider>
+        </UserContextProvider>
       </AuthContextProvider>
     </QueryClientProvider>
   </React.StrictMode>,

@@ -9,7 +9,7 @@ const TutorContextProvider = ({ children }) => {
     const [allUsers, setAllUsers] = useState([])
     const [allTutors, setAllTutors] = useState([])
     const [totalReviews, setTotalReviews] = useState()
-    const [allLessons, setAllLessons] =  useState([])
+    const [allLessons, setAllLessons] = useState([])
     const { user } = useContext(authContext)
 
     useEffect(() => {
@@ -45,13 +45,11 @@ const TutorContextProvider = ({ children }) => {
 
     }, [user?.email])
 
-
-
     // Get all lessons
     useEffect(() => {
-        const fetchLessons = async() => {
+        const fetchLessons = async () => {
             try {
-                const {data} = await axios.get(`${import.meta.env.VITE_MAIN_URL}/lessons`)
+                const { data } = await axios.get(`${import.meta.env.VITE_MAIN_URL}/lessons`)
                 setAllLessons(data)
             } catch (error) {
                 console.error('Error while fetching lessons', error)
@@ -61,12 +59,23 @@ const TutorContextProvider = ({ children }) => {
         fetchLessons()
     }, [])
 
+    // Get lesson by id
+    const getLessonById = async (lessonId) => {
+        try {
+            const { data } = await axios.get(`${import.meta.env.VITE_MAIN_URL}/lesson/${lessonId}`)
+            return data
+        } catch (error) {
+            console.error('Error while get lesson by id', error)
+        }
+    }
+
 
     const tutorContextValues = {
         allUsers,
         allTutors,
         totalReviews,
-        allLessons
+        allLessons,
+        getLessonById
     }
 
     return (

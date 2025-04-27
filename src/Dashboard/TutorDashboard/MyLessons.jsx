@@ -1,23 +1,30 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { tutorContext } from '../../Contexts/TutorContext/TutorContext'
-import { FaDownload } from 'react-icons/fa'
+import { FaDownload, FaEdit } from 'react-icons/fa'
 import { FaTrashCan } from 'react-icons/fa6'
 import { authContext } from '../../Contexts/AuthContext/AuthContext'
 import { useQuery } from '@tanstack/react-query'
 import axios from 'axios'
 import Swal from 'sweetalert2'
+import LoadingPage from '../../Pages/LoadingPage/LoadingPage'
+import LessonEditModal from '../../Components/LessonEditModal'
 
 const MyLessons = () => {
   // const [myLessons, setMyLessons] = useState([])
   const { user } = useContext(authContext)
+  const [lessonId, setLessonId] = useState('')
 
   // Get Specific tutors lessons
   const { data: myLessons = [], isLoading, refetch } = useQuery({
     queryKey: ['myLessons', user?.email],
     queryFn: async () => {
-      const res = await axios.get(`${import.meta.env.VITE_MAIN_URL}/my-lessons?email=${user?.email}`)
-      return res.data
+      try {
+        const res = await axios.get(`${import.meta.env.VITE_MAIN_URL}/my-lessons?email=${user?.email}`)
+        return res.data
+      } catch (error) {
+        console.log(error)
+      }
     },
     enabled: !!user?.email
   })
@@ -50,15 +57,25 @@ const MyLessons = () => {
     }
   }
 
+  // Open modal
+  const openModal = (id) => {
+    document.getElementById('my_modal_1').showModal()
+    setLessonId(id)
+    console.log(lessonId)
+  }
+
+
+
 
   return (
     <div id='all-lessons' className='p-5'>
+      <LessonEditModal lessonId={lessonId} />
       {/* Breadcrumb */}
       <div className='mb-5'>
         <div className="breadcrumbs text-sm mb-6">
           <ul>
             <li><Link href={"/dashboard"}>Dashboard</Link></li>
-            <li><Link className="text-primary" href={"/dashboard/all-lessons"}>All lessons</Link></li>
+            <li><Link className="text-primary" href={"/dashboard/all-lessons"}>My lessons</Link></li>
           </ul>
         </div>
       </div>
@@ -142,7 +159,7 @@ const MyLessons = () => {
                   </td>
                   <td>${lesson?.price}</td>
                   <td className='flex gap-4'>
-                    <span onClick={() => openModal(user?._id)} className='text-lg text-[#2AA75F] cursor-pointer'><FaDownload /></span>
+                    <span onClick={() => openModal(lesson?._id)} className='text-lg text-[#2AA75F] cursor-pointer'><FaEdit /></span>
                     <span onClick={() => handleDeleteLesson(lesson?._id)} className='text-lg text-[#E32A46] cursor-pointer'><FaTrashCan /></span>
                   </td>
                 </tr>

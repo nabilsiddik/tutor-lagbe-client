@@ -4,20 +4,15 @@ import { FaUsers } from "react-icons/fa";
 import { RxExit } from "react-icons/rx";
 
 const DashboardSidebar = () => {
-  const [admin, setAdmin] = useState(false)
-  const [tutor, setTutor] = useState(true)
+  const [admin, setAdmin] = useState(true)
+  const [tutor, setTutor] = useState(false)
   return (
     <div className='py-5 px-3 flex flex-col justify-between h-full'>
       <div>
         {/* admin routes  */}
         {admin &&
           <ul>
-            <DashboardMenuItem icon={<FaUsers />} menuTitle={'All Users'} />
-            <DashboardMenuItem icon={<FaUsers />} menuTitle={'All Users'} />
-            <DashboardMenuItem icon={<FaUsers />} menuTitle={'All Users'} />
-            <DashboardMenuItem icon={<FaUsers />} menuTitle={'All Users'} />
-            <DashboardMenuItem icon={<FaUsers />} menuTitle={'All Users'} />
-            <DashboardMenuItem icon={<FaUsers />} menuTitle={'All Users'} />
+            <DashboardMenuItem icon={<FaUsers />} menuTitle={'All Users'} link='all-users' />
           </ul>
         }
 
