@@ -4,23 +4,35 @@ import { FaUsers } from "react-icons/fa";
 import { RxExit } from "react-icons/rx";
 
 const DashboardSidebar = () => {
-  const [admin, setAdmin] = useState(true)
+  const [admin, setAdmin] = useState(false)
   const [tutor, setTutor] = useState(false)
+  const [user, setUser] = useState(true)
   return (
     <div className='py-5 px-3 flex flex-col justify-between h-full'>
       <div>
         {/* admin routes  */}
         {admin &&
-          <ul>
+          <ul id='admin_ul'>
             <DashboardMenuItem icon={<FaUsers />} menuTitle={'All Users'} link='all-users' />
+            <DashboardMenuItem icon={<FaUsers />} menuTitle={'All Lessons'} link='all-lessons' />
+            <DashboardMenuItem icon={<FaUsers />} menuTitle={'Tutor Request'} link='tutor-request' />
           </ul>
         }
 
         {/* tutor routes  */}
         {tutor &&
-          <ul>
-            <DashboardMenuItem icon={<FaUsers />} menuTitle={'Add Lession'} link='add-lession' />
-            <DashboardMenuItem icon={<FaUsers />} menuTitle={'All Lessions'} link='all-lession' />
+          <ul id='tutor_ul'>
+            <DashboardMenuItem icon={<FaUsers />} menuTitle={'Add Lession'} link='add-lesson' />
+            <DashboardMenuItem icon={<FaUsers />} menuTitle={'My Lessions'} link='my-lessons' />
+          </ul>
+        }
+
+
+        {/* tutor routes  */}
+        {user &&
+          <ul id='tutor_ul'>
+            <DashboardMenuItem icon={<FaUsers />} menuTitle={'My Booked Lessons'} link='my-booked-lessons' />
+            <DashboardMenuItem icon={<FaUsers />} menuTitle={'Become a Tutor'} link='become-a-tutor' />
           </ul>
         }
       </div>

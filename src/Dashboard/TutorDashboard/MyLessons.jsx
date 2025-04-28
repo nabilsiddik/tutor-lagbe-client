@@ -68,7 +68,7 @@ const MyLessons = () => {
 
 
   return (
-    <div id='all-lessons' className='p-5'>
+    <div id='my-lessons' className='p-5'>
       <LessonEditModal lessonId={lessonId} />
       {/* Breadcrumb */}
       <div className='mb-5'>
@@ -144,27 +144,31 @@ const MyLessons = () => {
                 <th>Actions</th>
               </tr>
             </thead>
-            <tbody>
-              {myLessons.map((lesson, index) => (
-                <tr key={lesson?._id} className='blesson-b blesson-[#e3e3e3]'>
-                  {/* <th>#{(currentPage - 1) * limit + index + 1}</th> */}
-                  <th>#{index + 1}</th>
-                  <td className='font-bold'>
-                    {lesson?.title}
-                  </td>
-                  <td className='capitalize'>{lesson?.language}</td>
-                  <td className='capitalize'>{lesson?.category}</td>
-                  <td>
-                    {lesson?.duration} Min
-                  </td>
-                  <td>${lesson?.price}</td>
-                  <td className='flex gap-4'>
-                    <span onClick={() => openModal(lesson?._id)} className='text-lg text-[#2AA75F] cursor-pointer'><FaEdit /></span>
-                    <span onClick={() => handleDeleteLesson(lesson?._id)} className='text-lg text-[#E32A46] cursor-pointer'><FaTrashCan /></span>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
+            {isLoading ?
+              <LoadingPage />
+              :
+              <tbody>
+                {myLessons.map((lesson, index) => (
+                  <tr key={lesson?._id} className='blesson-b blesson-[#e3e3e3]'>
+                    {/* <th>#{(currentPage - 1) * limit + index + 1}</th> */}
+                    <th>#{index + 1}</th>
+                    <td className='font-bold'>
+                      {lesson?.title}
+                    </td>
+                    <td className='capitalize'>{lesson?.language}</td>
+                    <td className='capitalize'>{lesson?.category}</td>
+                    <td>
+                      {lesson?.duration} Min
+                    </td>
+                    <td>${lesson?.price}</td>
+                    <td className='flex gap-4'>
+                      <span onClick={() => openModal(lesson?._id)} className='text-lg text-[#2AA75F] cursor-pointer'><FaEdit /></span>
+                      <span onClick={() => handleDeleteLesson(lesson?._id)} className='text-lg text-[#E32A46] cursor-pointer'><FaTrashCan /></span>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            }
           </table>
         </div>
       </div>

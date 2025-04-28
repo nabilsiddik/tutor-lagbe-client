@@ -23,6 +23,8 @@ import MyLessons from './Dashboard/TutorDashboard/MyLessons.jsx'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import AllUsers from './Dashboard/AdminDashboard/AllUsers.jsx'
 import { UserContextProvider } from './Contexts/UserContext/UserContext.jsx'
+import AllLessons from './Dashboard/AdminDashboard/AllLessons.jsx'
+import TutorRequest from './Dashboard/AdminDashboard/TutorRequest.jsx'
 
 const queryClient = new QueryClient()
 
@@ -95,18 +97,25 @@ const route = createBrowserRouter([
     </PrivateRoute>,
     children: [
       {
-        path: 'add-lession',
+        path: 'add-lesson',
         element: <AddLession />
       },
       {
-        path: 'all-lession',
+        path: 'my-lessons',
         element: <MyLessons />
       },
-      ,
+      {
+        path: 'all-lessons',
+        element: <AllLessons />
+      },
       {
         path: 'all-users',
         element: <AllUsers />
       },
+      {
+        path: 'tutor-request',
+        element: <TutorRequest/>
+      }
 
     ]
   }

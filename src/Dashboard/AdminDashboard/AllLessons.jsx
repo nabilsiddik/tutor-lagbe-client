@@ -1,23 +1,23 @@
-import React, { useContext } from 'react'
+import axios from 'axios'
+import React, { useContext, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { userContext } from '../../Contexts/UserContext/UserContext'
+import { authContext } from '../../Contexts/AuthContext/AuthContext'
+import { useQuery } from '@tanstack/react-query'
+import LoadingPage from '../../Pages/LoadingPage/LoadingPage'
 import { FaEdit } from 'react-icons/fa'
-import { FaTrashCan } from 'react-icons/fa6';
-import userIcon from '../../assets/images/icons/user.png'
-import { authContext } from '../../Contexts/AuthContext/AuthContext';
-import axios from 'axios';
-import { useQuery } from '@tanstack/react-query';
-import Swal from 'sweetalert2';
-import LoadingPage from '../../Pages/LoadingPage/LoadingPage';
+import { FaTrashCan } from 'react-icons/fa6'
 
-const AllUsers = ({ userId }) => {
+const AllLessons = () => {
+
     const { user } = useContext(authContext)
-    // Get Specific tutors lessons
-    const { data: allUsers = [], isLoading, refetch } = useQuery({
-        queryKey: ['allUsers', user?.email],
+    const [lessonId, setLessonId] = useState('')
+
+    // Get all lessons
+    const { data: allLessons = [], isLoading, refetch } = useQuery({
+        queryKey: ['allLessons', user?.email],
         queryFn: async () => {
             try {
-                const res = await axios.get(`${import.meta.env.VITE_MAIN_URL}/users`)
+                const res = await axios.get(`${import.meta.env.VITE_MAIN_URL}/lessons`)
                 return res.data
             } catch (error) {
                 console.log(error)
@@ -26,43 +26,16 @@ const AllUsers = ({ userId }) => {
         enabled: !!user?.email
     })
 
-    // Delete user
-    const handleDeleteUser = async (userId) => {
-        try {
-            const { data } = await axios.delete(`${import.meta.env.VITE_MAIN_URL}/delete-user/${userId}`)
-
-            if (data.deletedCount > 0) {
-                refetch()
-                Swal.fire({
-                    position: "center",
-                    icon: "success",
-                    title: "User Deleted Successfully",
-                    showConfirmButton: false,
-                    timer: 1500
-                });
-            } else {
-                Swal.fire({
-                    position: "center",
-                    icon: "error",
-                    title: "Opps! Error while deleting user",
-                    showConfirmButton: false,
-                    timer: 1500
-                });
-            }
-        } catch (error) {
-            console.error('Error while deleting user', error)
-        }
-    }
 
     return (
-        <div id='all-users' className='p-5'>
-            {/* <userEditModal userId={userId && userId} /> */}
+        <div id='all-lessons' className='p-5'>
+            {/* <LessonEditModal lessonId={lessonId} /> */}
             {/* Breadcrumb */}
             <div className='mb-5'>
                 <div className="breadcrumbs text-sm mb-6">
                     <ul>
                         <li><Link href={"/dashboard"}>Dashboard</Link></li>
-                        <li><Link className="text-primary" href={"/dashboard/all-users"}>All Users</Link></li>
+                        <li><Link className="text-primary" href={"/dashboard/all-lessons"}>All lessons</Link></li>
                     </ul>
                 </div>
             </div>
@@ -73,7 +46,7 @@ const AllUsers = ({ userId }) => {
                     <div className='col-span-3'>
                         <fieldset className="fieldset w-full">
                             <legend className="fieldset-legend">Show By</legend>
-                            <select className="select w-full buser" onChange={(e) => setLimit(parseInt(e.target.value))}>
+                            <select className="select w-full blesson" onChange={(e) => setLimit(parseInt(e.target.value))}>
                                 <option value={12}>12 Row</option>
                                 <option value={24}>24 Row</option>
                                 <option value={36}>36 Row</option>
@@ -83,7 +56,7 @@ const AllUsers = ({ userId }) => {
                     <div className='col-span-3'>
                         <fieldset className="fieldset w-full">
                             <legend className="fieldset-legend">Payment By</legend>
-                            <select className="select w-full buser" value={'df'} onChange={(e) => setFilterRole(e.target.value)}>
+                            <select className="select w-full blesson" value={'df'} onChange={(e) => setFilterRole(e.target.value)}>
                                 <option value="">All</option>
                                 <option value="bkash">Bkash</option>
                                 <option value="nagad">Nagad</option>
@@ -95,7 +68,7 @@ const AllUsers = ({ userId }) => {
                     <div className='col-span-3'>
                         <fieldset className="fieldset w-full">
                             <legend className="fieldset-legend">Status By</legend>
-                            <select className="select w-full buser" value={'df'} onChange={(e) => setFilterStatus(e.target.value)}>
+                            <select className="select w-full blesson" value={'df'} onChange={(e) => setFilterStatus(e.target.value)}>
                                 <option value="">All</option>
                                 <option value="pending">Pending</option>
                                 <option value="shipped">Shipped</option>
@@ -108,7 +81,7 @@ const AllUsers = ({ userId }) => {
                         <fieldset className="fieldset w-full">
                             <legend className="fieldset-legend">Search By</legend>
                             <input
-                                className='input buser w-full'
+                                className='input blesson w-full'
                                 type='search'
                                 placeholder='Transection ID / Customer Email'
                                 onChange={(e) => setSearch(e.target.value)}
@@ -119,42 +92,53 @@ const AllUsers = ({ userId }) => {
 
                 {/* Table */}
                 <div className="overflow-x-auto">
-                    <table className="table buser buser-[#e3e3e3]">
+                    <table className="table blesson blesson-[#e3e3e3]">
                         <thead className='bg-primary text-white'>
-                            <tr className='buser-b buser-[#e3e3e3]'>
+                            <tr className='blesson-b blesson-[#e3e3e3]'>
                                 <th>Number</th>
-                                <th>Profile</th>
-                                <th>Name</th>
-                                <th>Email</th>
-                                <th>Role</th>
-                                <th>Number</th>
+                                <th>Added By</th>
+                                <th>Lesson Title</th>
+                                <th>Language</th>
+                                <th>Category</th>
+                                <th>Duration</th>
+                                <th>Price</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
                         {isLoading ?
-                            <LoadingPage/>
+                            <LoadingPage />
                             :
                             <tbody>
-                                {allUsers.map((user, index) => (
-                                    <tr key={user?._id} className='buser-b buser-[#e3e3e3]'>
+                                {allLessons.map((lesson, index) => (
+                                    <tr key={lesson?._id} className='blesson-b blesson-[#e3e3e3]'>
                                         {/* <th>#{(currentPage - 1) * limit + index + 1}</th> */}
                                         <th>#{index + 1}</th>
-                                        <td>
-                                            <img className='w-[50px] rounded-full' src={user?.photoUrl ? user?.photoUrl : userIcon} alt={user?.name} />
+                                        <th>
+                                            <div className='flex items-center gap-3'>
+                                                <img className='rounded-full w-[50px]' src={lesson?.tutor?.profile} alt={lesson?.tutor?.name} />
+                                                <div>
+                                                    <p>{lesson?.tutor?.name}</p>
+                                                    <p className='font-normal'>{lesson?.tutor?.email}</p>
+                                                </div>
+                                            </div>
+                                        </th>
+                                        <td className='font-bold'>
+                                            {lesson?.title}
                                         </td>
-                                        <td className='font-bold'>{user?.name ? user?.name : 'Unavailable'}</td>
-                                        <td className='capitalize'>{user?.email ? user?.email : 'Unavailable'}</td>
-                                        <td className='capitalize'>{user?.role ? user?.role : 'N/A'}</td>
-                                        <td className='capitalize'>{user?.phone ? user?.phone : 'N/A'}</td>
+                                        <td className='capitalize'>{lesson?.language}</td>
+                                        <td className='capitalize'>{lesson?.category}</td>
+                                        <td>
+                                            {lesson?.duration} Min
+                                        </td>
+                                        <td>${lesson?.price}</td>
                                         <td className='flex gap-4'>
-                                            <span onClick={() => openModal(user?._id)} className='text-lg text-[#2AA75F] cursor-pointer'><FaEdit /></span>
-                                            <span onClick={() => handleDeleteUser(user?._id)} className='text-lg text-[#E32A46] cursor-pointer'><FaTrashCan /></span>
+                                            <span onClick={() => openModal(lesson?._id)} className='text-lg text-[#2AA75F] cursor-pointer'><FaEdit /></span>
+                                            <span onClick={() => handleDeleteLesson(lesson?._id)} className='text-lg text-[#E32A46] cursor-pointer'><FaTrashCan /></span>
                                         </td>
                                     </tr>
                                 ))}
                             </tbody>
                         }
-
                     </table>
                 </div>
             </div>
@@ -162,4 +146,4 @@ const AllUsers = ({ userId }) => {
     )
 }
 
-export default AllUsers
+export default AllLessons

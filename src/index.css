@@ -38,3 +38,8 @@ input[type='text'], input[type='number'], input[type='email'], textarea{
 li .active{
     border-bottom: 2px solid white;
 }
+
+#admin_ul .active, #tutor_ul .active, #user_ul .active{
+    background: rgb(254 202 202);
+    border-left: 2px solid rgb(255 68 56);
+}
