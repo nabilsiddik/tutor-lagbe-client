@@ -25,6 +25,9 @@ import AllUsers from './Dashboard/AdminDashboard/AllUsers.jsx'
 import { UserContextProvider } from './Contexts/UserContext/UserContext.jsx'
 import AllLessons from './Dashboard/AdminDashboard/AllLessons.jsx'
 import TutorRequest from './Dashboard/AdminDashboard/TutorRequest.jsx'
+import MyBookedLessons from './Dashboard/UserDashboard/MyBookedLessons.jsx'
+import BecomeATutor from './Dashboard/UserDashboard/BecomeATutor.jsx'
+import UserDashboard from './Dashboard/UserDashboard/UserDashboard.jsx'
 
 const queryClient = new QueryClient()
 
@@ -115,6 +118,18 @@ const route = createBrowserRouter([
       {
         path: 'tutor-request',
         element: <TutorRequest/>
+      },
+      {
+       path: 'user-dashboard',
+       element: <UserDashboard/> 
+      },
+      {
+        path: 'my-booked-lessons',
+        element: <MyBookedLessons/>
+      },
+      {
+        path: 'become-a-tutor',
+        element: <BecomeATutor/>
       }
 
     ]
