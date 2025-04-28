@@ -4,9 +4,9 @@ import { FaUsers } from "react-icons/fa";
 import { RxExit } from "react-icons/rx";
 
 const DashboardSidebar = () => {
-  const [admin, setAdmin] = useState(false)
+  const [admin, setAdmin] = useState(true)
   const [tutor, setTutor] = useState(false)
-  const [user, setUser] = useState(true)
+  const [user, setUser] = useState(false)
   return (
     <div className='py-5 px-3 flex flex-col justify-between h-full'>
       <div>
