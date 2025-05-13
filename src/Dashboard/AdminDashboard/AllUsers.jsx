@@ -127,6 +127,7 @@ const AllUsers = ({ userId }) => {
                                 <th>Name</th>
                                 <th>Email</th>
                                 <th>Role</th>
+                                <th>Status</th>
                                 <th>Number</th>
                                 <th>Actions</th>
                             </tr>
@@ -145,6 +146,7 @@ const AllUsers = ({ userId }) => {
                                         <td className='font-bold'>{user?.name ? user?.name : 'Unavailable'}</td>
                                         <td className='capitalize'>{user?.email ? user?.email : 'Unavailable'}</td>
                                         <td className='capitalize'>{user?.role ? user?.role : 'N/A'}</td>
+                                        <td>{user?.userStatus ? user?.userStatus : 'N/A'}</td>
                                         <td className='capitalize'>{user?.phone ? user?.phone : 'N/A'}</td>
                                         <td className='flex gap-4'>
                                             <span onClick={() => openModal(user?._id)} className='text-lg text-[#2AA75F] cursor-pointer'><FaEdit /></span>

@@ -5,8 +5,8 @@ import { RxExit } from "react-icons/rx";
 
 const DashboardSidebar = () => {
   const [admin, setAdmin] = useState(true)
-  const [tutor, setTutor] = useState(false)
-  const [user, setUser] = useState(false)
+  const [tutor, setTutor] = useState(true)
+  const [user, setUser] = useState(true)
   return (
     <div className='py-5 px-3 flex flex-col justify-between h-full'>
       <div>

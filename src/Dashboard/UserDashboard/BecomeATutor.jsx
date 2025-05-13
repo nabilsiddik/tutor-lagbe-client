@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import BecomeATutorForm from '../../Components/BecomeATutorForm'
+import TutorApplicationForm from '../../Components/TutorApplicationForm'
 
 const BecomeATutor = () => {
     return (
@@ -15,8 +16,9 @@ const BecomeATutor = () => {
                 </div>
             </div>
 
-            <h1 className='mb-10 text-3xl text-center'>Apply To Become a Tutor</h1>
-            <BecomeATutorForm/>
+            {/* <h1 className='mb-6 text-3xl text-center'>Apply To Become a Tutor</h1> */}
+            {/* <BecomeATutorForm/> */}
+            <TutorApplicationForm/>
         </div>
     )
 }
