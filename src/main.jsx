@@ -28,6 +28,7 @@ import TutorRequest from './Dashboard/AdminDashboard/TutorRequest.jsx'
 import MyBookedLessons from './Dashboard/UserDashboard/MyBookedLessons.jsx'
 import BecomeATutor from './Dashboard/UserDashboard/BecomeATutor.jsx'
 import UserDashboard from './Dashboard/UserDashboard/UserDashboard.jsx'
+import TutorApplicationForm from './Components/TutorApplicationForm.jsx'
 
 const queryClient = new QueryClient()
 
@@ -129,8 +130,8 @@ const route = createBrowserRouter([
       },
       {
         path: 'become-a-tutor',
-        element: <BecomeATutor/>
-      }
+        element: <BecomeATutor/>,
+      },
 
     ]
   }

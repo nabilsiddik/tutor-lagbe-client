@@ -69,13 +69,23 @@ const TutorContextProvider = ({ children }) => {
         }
     }
 
+    // Get tutor application by id
+    const getTutorApplicationByEmail = async (userEmail) => {
+        try {
+            const { data } = await axios.get(`${import.meta.env.VITE_MAIN_URL}/tutor-application/?email=${userEmail}`)
+            return data
+        } catch (error) {
+            console.error('Error while get tutor application', error)
+        }
+    }
 
     const tutorContextValues = {
         allUsers,
         allTutors,
         totalReviews,
         allLessons,
-        getLessonById
+        getLessonById,
+        getTutorApplicationByEmail
     }
 
     return (
